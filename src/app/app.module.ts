@@ -1,15 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {HomeComponent} from './shared/home/home.component';
+import {AppComponent } from './app.component';
+import {RouterModule, Routes} from '@angular/router';
 
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  }
+];
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    RouterModule.forRoot(appRoutes),
+    BrowserModule,
+    RouterModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
