@@ -1,27 +1,49 @@
-# AffinityNowFront
+## AffinityNow
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
-## Development server
+AffinityNow is a free communication app inspired by messaging & social media apps.
+Written in JAVA, CometChat and Firebase services.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Screenshots
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Chat :  
+   ......coming soon
 
-## Build
+### Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+git    * Match people based on mutual interest 
 
-## Running unit tests
+   ......coming soon
+   * Authentication
+   * Create user profile (Username)
+   * Search users by Username
+   * Send audio messages, text, graphic, messages
+   * Check message read/delivery status
+   * Take a picture from camera or gallery
+   * Display graphics in full screen view, zoom in/out, drag and rotate
+   * Check user online status
+   * Get notifications about new messages
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Download for Android Software
 
-## Running end-to-end tests
+Click on the links below to download owr fun App 😄
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Authors
+* **Chakir Ardenne** - *Master 1 Devops project* - [Github Account](https://github.com/ChakirArdenne)
+* **Avi Assayag** - *Master 1 Devops project* - [Github Account](https://github.com/AssayagAvi)
+* **Erwyn Ramin** - *Master 1 Devops project* - [Github Account](https://github.com/Ramin-Erwyn)
+* **Ahlem Fantazi** - *Master 1 Devops project* - [Github Account](https://github.com/AhlemFANTA)
 
-## Further help
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+### Versioning
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/AffinityNowFront/AffinityNowFront).
+
+### Bugs / Feature request
+Please [report](https://github.com/AffinityNowFront/AffinityNowFront/issues) bugs and feel free to [ask](https://github.com/AffinityNowFront/AffinityNowFront/issues) for new features directly on GitHub.
+
+### License
+This project licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE) file for details

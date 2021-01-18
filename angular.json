@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "AffinityNowFront"
+  "defaultProject": "AffinityNowFront",
+  "cli": {
+    "analytics": false
+  }
 }
