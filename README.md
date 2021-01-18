@@ -8,12 +8,11 @@ Written in JAVA, CometChat and Firebase services.
 
 ### Screenshots
 
-Chat :  
    ......coming soon
 
 ### Features
 
-git    * Match people based on mutual interest 
+   * Match people based on mutual interest 
 
    ......coming soon
    * Authentication
