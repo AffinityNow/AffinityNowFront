@@ -1,55 +1,73 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Angular5</title>
-    <base href="/">
+<head>
+  <meta charset="utf-8">
+  <title>Angular5</title>
+  <base href="/">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  </head>
-  <body style="background-color:#7599b3">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+</head>
+<body style="background-color:#7599b3">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-    <div class="row">
-      <div class="col s8 offset-s2">
-        <div class="card">
-          <div class="sm-jumbotron center-align">
-            <h4>User Registration</h4>
-          </div>
-          <form class="col s8 white" #userRegistrationForm="ngForm">
-            <div class="row ">
-              <div class="input-field col s4 " style="margin-left: 70px">
-                <input class="validate" type="text" name="UserName" [(ngModel)]="user.UserName" placeholder="choose your username"
-                       required>
-                <label data-error="Required field!"></label>
-              </div>
+<p-dropdown [options]="ratings" [(ngModel)]="selection" placeholder="Choose rating" optionLabel="name"
+            [showClear]="true"></p-dropdown>
 
-            </div>
-            <div class="col s8 white">
-            <p-orderList [value]="topics" [listStyle]="{'height':'auto'}" header="Choose a center of interest" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
-              <ng-template let-product pTemplate="item">
-                <div class="product-item">
-                  <div class="product-list-detail">
-                    <h6 class="p-mb-2">{{product.name}}</h6>
-                  </div>
-                  <div class="product-list-action">
-                    <h6 class="p-mb-2">★{{product.rating}}</h6>
-                  </div>
-                </div>
-              </ng-template>
-            </p-orderList>
-            </div>
-            <div class="row">
-              <div class="input-field col s5" style="margin-left: 130px">
-                <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card">
+      <div class="sm-jumbotron center-align">
+        <h4>User Registration</h4>
       </div>
+
+      <form class="col s8 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit()">
+        <div class="row ">
+          <div class="input-field col s4 " style="margin-left: 70px">
+            <input class="validate" type="text" name="UserName" [(ngModel)]="user.userName"
+                   placeholder="choose your username"
+                   required>
+            <label data-error="Required field!"></label>
+          </div>
+
+        </div>
+        <div class="col s8 white">
+          <p-orderList [value]="user.topics" [listStyle]="{'height':'auto'}"
+                       header="Choose a center of interest"
+                       filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="false"
+                       readonly="false">
+            <ng-template let-ratedTopic pTemplate="item">
+              <div class="product-item">
+                <div class="product-list-detail">
+                  <h6 class="p-mb-2">{{ratedTopic.topic.name}}</h6>
+                </div>
+
+                <div class="product-list-action">
+                  <!--                   <h6 class="p-mb-2">★{{topic.rating}}</h6>-->
+                  <h6 class="p-mb-2">
+                    <p-dropdown [options]="ratings" [(ngModel)]="ratedTopic.rate" name="N" placeholder="Choose rating"
+                                optionLabel="name" [showClear]="true"
+                                readonly="false"></p-dropdown>
+                  </h6>
+                </div>
+              </div>
+            </ng-template>
+
+          </p-orderList>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s5" style="margin-left: 130px">
+            <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit" >Submit</button>
+          </div>
+        </div>
+      </form>
+
+
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>

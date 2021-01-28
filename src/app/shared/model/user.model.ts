@@ -1,6 +1,6 @@
-import {Topic} from './topic.model';
+import {RatedTopic} from './ratedtopic.model';
 
 export class User {
-  UserName: string;
-  topic: Topic[];
+  userName: string;
+  topics: RatedTopic[];
 }

@@ -15,30 +15,4 @@ export class TopicService {
       .then(res => <Topic[]>res.data)
       .then(data => { return data; });
   }
-
-
-  generateTopic(): Topic {
-    const topic: Topic =  {
-      id: this.generateId(),
-      rating: this.generateRating()
-    };
-
-    topic.image = topic.name.toLocaleLowerCase().split(/[ ,]+/).join('-')+".jpg";;
-    return topic;
-  }
-
-  generateId() {
-    let text = "";
-    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i = 0; i < 5; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-
-    return text;
-  }
-
-  generateRating() {
-    return Math.floor(Math.random() * Math.floor(5)+1);
-  }
 }

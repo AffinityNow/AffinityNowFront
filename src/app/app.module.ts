@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 const appRoutes: Routes = [
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     OrderListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DropdownModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],

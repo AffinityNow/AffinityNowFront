@@ -1,24 +1,27 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {User} from '../model/user.model';
+import {Observable} from 'rxjs';
 
 
 @Injectable()
 export class UserService {
-  readonly rootUrl = 'http://localhost:8080/utilisateur/{id}/topics';
+  readonly rootUrl = 'http://localhost:8080/utilisateur';
+
   constructor(private http: HttpClient) {
   }
 
-  // registerUser(user: User): Observable<User>{
-  //   const body: User = {
-  //     UserName: user.UserName,
-  //     Password: user.Password,
-  //     Email: user.Email,
-  //     FirstName: user.FirstName,
-  //     LastName: user.LastName
-  //   };
-  //   return this.http.post<User>(this.rootUrl + '/api/User/Register', body);
-  // }
+  registerUser(user: User): Observable<User> {
+    const body = {
+      pseudo: user.userName,
+      topics: user.topics.map(function(t) {
+        return {
+          id: t.topic.id,
+          score: t.rate.score
+        };
+      })
+    };
+    return this.http.post<User>(this.rootUrl + '/topics', body);
+  }
 
 }
