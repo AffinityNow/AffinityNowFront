@@ -2,6 +2,16 @@
 
 <button (click)="fetchlisteMatch()">Fetch liste</button>
 <hr/>
-<ul>
-  <li *ngFor="let utilisateur of liste | async">{{utilisateur.pseudo}}>
-</ul>
+
+
+
+
+
+<table>
+  <tr>
+    <th>Pseudo</th>
+  </tr>
+  <tr>
+    <td><li *ngFor="let utilisateur of liste | async">{{utilisateur.pseudo}}></td>
+  </tr>
+</table>
