@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
+import {Component} from '@angular/core';
+import '../../shared/model/ratedtopic.model';
+import '../../shared/model/rateitem.model';
+import {RateItem} from '../../shared/model/rateitem.model';
+import {User} from '../../shared/model/user.model';
 import {TopicService} from '../../shared/service/TopicService';
 import {PrimeNGConfig} from 'primeng/api';
 import {UserService} from '../../shared/service/user.service';
-import '../../shared/model/ratedtopic.model';
-import '../../shared/model/rateitem.model';
+import {ToastrService} from 'ngx-toastr';
 import {RatedTopic} from '../../shared/model/ratedtopic.model';
-import {RateItem} from '../../shared/model/rateitem.model';
-import {User} from '../../shared/model/user.model';
+import {FormControl, FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -16,51 +16,54 @@ import {User} from '../../shared/model/user.model';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
 
+  selection: RateItem;
 
   user: User = new User();
-  ratings: RateItem [];
-  selection: RateItem;
+  ratings: RateItem [] = [
+    {name: '★★★★★', score: 'CINQ'},
+    {name: '★★★★', score: 'QUATRE'},
+    {name: '★★★', score: 'TROIS'},
+    {name: '★★', score: 'DEUX'},
+    {name: '★', score: 'UN'}
+  ];
+
 
   constructor(private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
               private userService: UserService,
               private toastr: ToastrService) {
+
   }
 
   ngOnInit(): void {
-    this.ratings = [
-      {name: '★★★★★', score: '5'},
-      {name: '★★★★', score: '4'},
-      {name: '★★★', score: '3'},
-      {name: '★★', score: '2'},
-      {name: '★', score: '1'}
-    ];
 
-
-    this.resetForm();
-    this.topicService.getTopics().then(topic => this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[4])));
-    this.primengConfig.ripple = true;
-
-
+    this.topicService.getTopics().then((topic) => {
+        console.log(topic);
+        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[4]));
+      }
+    );
   }
 
-  resetForm(form?: NgForm): void {
-    if (form != null) {
-      form.reset();
-    }
-    this.user = new User();
-  }
+  public form: FormGroup = new FormGroup({
+    username: new FormControl(),
+  });
 
-  OnSubmit(): void {
+  public sign_up(): void {
     this.userService.registerUser(this.user)
       .subscribe(data => {
-        this.resetForm();
         this.toastr.success('User registration successful');
       }, error => {
-        this.toastr.error(error);
+        this.toastr.error('Something went wrong', 'Error', {
+          positionClass: 'toast-top-center',
+        });
       });
   }
 
+
+  public clearForm(): void {
+    this.form.reset();
+  }
 }
+

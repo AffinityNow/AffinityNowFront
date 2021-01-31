@@ -15,7 +15,14 @@ import {FormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
+
+import {GridModule, RowFilterModule} from '@progress/kendo-angular-grid';
+import {DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { InputsModule } from '@progress/kendo-angular-inputs';
 import {DropdownModule} from 'primeng/dropdown';
+import {LabelModule} from '@progress/kendo-angular-label';
+
+
 
 
 const appRoutes: Routes = [
@@ -52,7 +59,12 @@ const appRoutes: Routes = [
     OrderListModule,
     HttpClientModule,
     FormsModule,
-    DropdownModule
+    GridModule,
+    DropDownsModule,
+    RowFilterModule,
+    InputsModule,
+    DropdownModule,
+    LabelModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],

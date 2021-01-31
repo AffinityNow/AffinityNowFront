@@ -12,16 +12,22 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<User> {
-    const body = {
+    const requestBody = {
       pseudo: user.userName,
-      topics: user.topics.map(function(t) {
-        return {
-          id: t.topic.id,
-          score: t.rate.score
-        };
-      })
+      connaissances: {} // objet connaissances vide
     };
-    return this.http.post<User>(this.rootUrl + '/topics', body);
+   // je parcours les topics notés par le user, et pour chaque topic noté
+    // on va construire un item connaissances (music -> topic, niveau)
+    user.topics.forEach(ratedTopic => {
+      //initialisation de la propriété ratedTopic de l'objet Connaissances
+      requestBody.connaissances[ratedTopic.topic.name] = {
+        'topic': ratedTopic.topic,
+        'niveau': ratedTopic.rate.score
+      };
+    });
+
+
+    return this.http.post<User>(this.rootUrl + '/connaissances', requestBody);
   }
 
 }
