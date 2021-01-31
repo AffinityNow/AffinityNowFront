@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ListeMatchService} from '../../shared/service/listeMatch.service';
+import {MatchServiceService} from '../../shared/service/match-service.service';
 
 @Component({
   selector: 'app-liste-match',
@@ -7,11 +7,11 @@ import {ListeMatchService} from '../../shared/service/listeMatch.service';
   styleUrls: ['./listeMatch.component.css']
 })
 export class ListeMatchComponent implements OnInit {
-  liste$;
+  liste;
   title = 'AffinityNowFront';
-  constructor(private listeMatchService: ListeMatchService) { }
+  constructor(private listeMatchService: MatchServiceService ) { }
   fetchlisteMatch() {
-    this.liste$ = this.listeMatchService.fetchListeMatch();
+    this.liste = this.listeMatchService.fetchListeMatch();
   }
 
   ngOnInit(): void {

@@ -2,3 +2,6 @@
 
 <button (click)="fetchlisteMatch()">Fetch liste</button>
 <hr/>
+<ul>
+  <li *ngFor="let utilisateur of liste | async">{{utilisateur.pseudo}}>
+</ul>
