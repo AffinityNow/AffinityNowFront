@@ -3,12 +3,17 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {HomeComponent} from './shared/home/home.component';
 import {AppComponent } from './app.component';
+import {ListeMatchService} from './shared/service/listeMatch.service';
 import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import {HttpClient} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
+
 import {LoginComponent} from './user/login/login.component';
 import {SigninComponent} from './user/signin/signin.component';
+import {ListeMatchComponent } from './user/listeMatch/listeMatch.component';
+
 
 const appRoutes: Routes = [
   {
@@ -23,21 +28,26 @@ const appRoutes: Routes = [
     path: 'signin',
     component: SigninComponent
   },
+  {
+    path: 'Liste',
+    component: ListeMatchComponent
+  },
 ];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
-  ],
+    HeaderComponent,
+    ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpClient],
+  providers: [HttpClient, ListeMatchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
