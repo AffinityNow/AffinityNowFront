@@ -8,11 +8,10 @@ import {FooterComponent} from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import {HttpClient} from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';
-
 import {LoginComponent} from './user/login/login.component';
 import {SigninComponent} from './user/signin/signin.component';
-import {ListeMatchComponent } from './user/listeMatch/listeMatch.component';
 import {MatchServiceService} from './shared/service/match-service.service';
+import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
 
 
 const appRoutes: Routes = [
@@ -30,7 +29,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'list',
-    component: ListeMatchComponent
+      component: ListeMatchComponent
   },
 ];
 @NgModule({
@@ -39,6 +38,7 @@ const appRoutes: Routes = [
     HomeComponent,
     FooterComponent,
     HeaderComponent,
+    ListeMatchComponent
     ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -47,7 +47,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpClient, MatchServiceService],
+  providers: [HttpClient, ListeMatchComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
