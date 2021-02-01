@@ -10,9 +10,8 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {HeaderComponent } from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './user/login/login.component';
-import {SigninComponent} from './user/signin/signin.component';
 import {MatchServiceService} from './shared/service/match-service.service';
-import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
+
 import {SignupComponent} from './user/signup/signup.component';
 import {FormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
@@ -24,6 +23,7 @@ import {DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import {DropdownModule} from 'primeng/dropdown';
 import {LabelModule} from '@progress/kendo-angular-label';
+import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
 
 
 
@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'list',
-      component: ListeMatchComponent
+    component: ListeMatchComponent
   },
 ];
 @NgModule({
@@ -75,7 +75,7 @@ const appRoutes: Routes = [
     LabelModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpClient, TopicService, UserService],
+  providers: [HttpClient, TopicService, UserService, MatchServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
