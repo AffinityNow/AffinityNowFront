@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'list',
+    path: 'listeMatch',
     component: ListeMatchComponent
   },
 ];

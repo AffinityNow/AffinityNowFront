@@ -12,7 +12,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 
 @Component({
-  selector: 'app-signin',
+  selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })

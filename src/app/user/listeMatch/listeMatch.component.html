@@ -1,13 +1,13 @@
-<p>La liste des matchs </p>
+<p xmlns="http://www.w3.org/1999/html">La liste des matchs </p>
 
 <button (click)="fetchlisteMatch()">Fetch liste</button>
 <hr/>
 
-<table>
+<ng-table class=" listMatch">
   <tr>
     <th>Pseudo</th>
   </tr>
   <tr>
-    <td><li *ngFor="let utilisateur of liste | async">{{utilisateur.pseudo}}></td>
+    <td><li *ngFor="let utilisateur of liste | async">{{utilisateur.pseudo}}</td>
   </tr>
-</table>
+</ng-table>
