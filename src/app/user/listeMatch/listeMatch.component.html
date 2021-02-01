@@ -1,0 +1,17 @@
+<p>La liste des matchs </p>
+
+<button (click)="fetchlisteMatch()">Fetch liste</button>
+<hr/>
+
+
+
+
+
+<table>
+  <tr>
+    <th>Pseudo</th>
+  </tr>
+  <tr>
+    <td><li *ngFor="let utilisateur of liste | async">{{utilisateur.pseudo}}></td>
+  </tr>
+</table>

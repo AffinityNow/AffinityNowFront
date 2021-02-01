@@ -10,6 +10,9 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {HeaderComponent } from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './user/login/login.component';
+import {SigninComponent} from './user/signin/signin.component';
+import {MatchServiceService} from './shared/service/match-service.service';
+import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
 import {SignupComponent} from './user/signup/signup.component';
 import {FormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
@@ -38,6 +41,10 @@ const appRoutes: Routes = [
     path: 'signup',
     component: SignupComponent
   },
+  {
+    path: 'list',
+      component: ListeMatchComponent
+  },
 ];
 @NgModule({
   declarations: [
@@ -46,7 +53,8 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     SignupComponent,
-  ],
+    ListeMatchComponent
+    ],
   imports: [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
