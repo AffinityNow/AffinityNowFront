@@ -1,0 +1,47 @@
+<div class="registration">
+  <form class="k-form" [formGroup]="form">
+    <fieldset class="k-form-fieldset">
+      <legend class="k-form-legend" style="font-size : 1.5em">Créez votre profil</legend>
+      <kendo-formfield>
+        <kendo-label [for]="username" text="Pseudo" style="font-size : 1.5em"></kendo-label>
+        <kendo-textbox id="textbox" style="width: 30%;" formControlName="username"  [(value)]="user.userName"  [clearButton]="true" #username required></kendo-textbox>
+
+        <kendo-formhint>Saisir votre pseudo</kendo-formhint>
+        <kendo-formerror>Error: pseudo est obligatoire</kendo-formerror>
+      </kendo-formfield>
+
+
+      <kendo-grid [data]="user.topics"style="margin-top: 5%;">
+        <kendo-grid-column field="topic.name"
+                           title="Nos Topics"
+                           [width]="600"
+                           [headerStyle]="{'font-size' : '1.5em'}"
+        ></kendo-grid-column>
+
+        <kendo-grid-column field="RateItem.name"
+                           title="Veuillez noter vos topics choisis"
+                           [width]="600"
+                           [headerStyle]="{'font-size' : '1.5em'}">
+          <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            <kendo-combobox [data]="ratings"
+                            placeholder="Please select"
+                            #score required
+                            [textField]="'name'"
+                            [valueField]="'score'"
+                            [(value)]="dataItem.rate">
+
+            </kendo-combobox>
+          </ng-template>
+        </kendo-grid-column>
+
+      </kendo-grid>
+
+      <div class="k-form-buttons" style="margin-left:36%;">
+        <button class="k-button k-primary" (click)="sign_up()" >S'inscrire</button>
+        <button class="k-button" (click)="clearForm()">Effacer</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
