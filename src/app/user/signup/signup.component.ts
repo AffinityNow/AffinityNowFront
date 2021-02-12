@@ -26,9 +26,9 @@ export class SignupComponent {
     {name: '★★★★', score: 'QUATRE'},
     {name: '★★★', score: 'TROIS'},
     {name: '★★', score: 'DEUX'},
-    {name: '★', score: 'UN'}
+    {name: '★', score: 'UN'},
+    {name: '', score: 'ZERO'}
   ];
-
 
   constructor(private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
@@ -41,7 +41,7 @@ export class SignupComponent {
 
     this.topicService.getTopics().then((topic) => {
         console.log(topic);
-        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[4]));
+        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5]));
       }
     );
   }
@@ -51,6 +51,12 @@ export class SignupComponent {
   });
 
   public sign_up(): void {
+    if (this.user.topics.every(ratedTopic => ratedTopic.rate.score == 'ZERO')) {
+      this.toastr.error('No topic is noted!', 'Error', {
+        positionClass: 'toast-top-center',
+      });
+      return;
+    }
     this.userService.registerUser(this.user)
       .subscribe(data => {
         this.toastr.success('User registration successful');
@@ -60,7 +66,6 @@ export class SignupComponent {
         });
       });
   }
-
 
   public clearForm(): void {
     this.form.reset();

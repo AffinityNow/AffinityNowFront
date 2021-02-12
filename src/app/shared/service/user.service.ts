@@ -16,15 +16,17 @@ export class UserService {
       pseudo: user.userName,
       connaissances: {} // objet connaissances vide
     };
-   // je parcours les topics notés par le user, et pour chaque topic noté
+    // je parcours les topics notés par le user, et pour chaque topic noté
     // on va construire un item connaissances (music -> topic, niveau)
-    user.topics.forEach(ratedTopic => {
-      //initialisation de la propriété ratedTopic de l'objet Connaissances
-      requestBody.connaissances[ratedTopic.topic.name] = {
-        'topic': ratedTopic.topic,
-        'niveau': ratedTopic.rate.score
-      };
-    });
+    user.topics
+      .filter(ratedTopic => ratedTopic.rate.score != 'ZERO')
+      .forEach(ratedTopic => {
+        //initialisation de la propriété ratedTopic de l'objet Connaissances
+        requestBody.connaissances[ratedTopic.topic.name] = {
+          'topic': ratedTopic.topic,
+          'niveau': ratedTopic.rate.score
+        };
+      });
 
 
     return this.http.post<User>(this.rootUrl + '/connaissances', requestBody);

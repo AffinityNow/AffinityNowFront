@@ -10,8 +10,7 @@
         <kendo-formerror>Error: pseudo est obligatoire</kendo-formerror>
       </kendo-formfield>
 
-
-      <kendo-grid [data]="user.topics"style="margin-top: 5%;">
+      <kendo-grid [data]="user.topics" style="margin-top: 5%;">
         <kendo-grid-column field="topic.name"
                            title="Nos Topics"
                            [width]="600"
@@ -28,7 +27,8 @@
                             #score required
                             [textField]="'name'"
                             [valueField]="'score'"
-                            [(value)]="dataItem.rate">
+                            [(value)]="dataItem.rate"
+            >
 
             </kendo-combobox>
           </ng-template>
@@ -37,7 +37,7 @@
       </kendo-grid>
 
       <div class="k-form-buttons" style="margin-left:36%;">
-        <button class="k-button k-primary" (click)="sign_up()" >S'inscrire</button>
+        <button [disabled]="!form.valid"  class="k-button k-primary" (click)="sign_up()" >S'inscrire</button>
         <button class="k-button" (click)="clearForm()">Effacer</button>
       </div>
     </fieldset>
