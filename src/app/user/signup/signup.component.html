@@ -10,7 +10,6 @@
         <kendo-formerror>Error: pseudo est obligatoire</kendo-formerror>
       </kendo-formfield>
 
-
       <kendo-grid [data]="user.topics" style="margin-top: 5%;">
         <kendo-grid-column field="topic.name"
                            title="Nos Topics"
@@ -29,7 +28,6 @@
                             [textField]="'name'"
                             [valueField]="'score'"
                             [(value)]="dataItem.rate"
-                            [contentEditable]="true"
             >
 
             </kendo-combobox>

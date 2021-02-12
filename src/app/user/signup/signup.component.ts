@@ -30,7 +30,6 @@ export class SignupComponent {
     {name: '', score: 'ZERO'}
   ];
 
-
   constructor(private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
               private userService: UserService,
@@ -67,7 +66,6 @@ export class SignupComponent {
         });
       });
   }
-
 
   public clearForm(): void {
     this.form.reset();
