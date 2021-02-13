@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-package/change-detection": "^1.0.0",
     "@angular/animations": "~11.0.9",
     "@angular/cdk": "^11.1.0",
     "@angular/common": "~11.0.9",

@@ -1,12 +1,22 @@
-<p xmlns="http://www.w3.org/1999/html">La liste des matchs </p>
+<p xmlns="http://www.w3.org/1999/html">Liste de vos match</p>
 
-<div>
-  <mat-table [dataSource]="dataSource">
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="pseudo">
       <mat-header-cell *matHeaderCellDef> Pseudo</mat-header-cell>
       <mat-cell *matCellDef="let utilisateur">{{utilisateur.pseudo}}</mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
+      <mat-cell *matCellDef="let utilisateur">{{utilisateur.id}}</mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
+
+
   </mat-table>
+  <mat-paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
 </div>
+

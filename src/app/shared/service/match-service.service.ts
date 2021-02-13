@@ -14,7 +14,4 @@ export class MatchServiceService {
   getUser(): Observable<Utilisateur[]>{
     return this.http.get<Utilisateur[]>(this.serviceUrl);
   }
-  fetchListeMatch(): Observable<Utilisateur[]> {
-    return this.http.get<Utilisateur[]>('http://localhost:8080/utilisateur/10/match/score');
-  }
 }
