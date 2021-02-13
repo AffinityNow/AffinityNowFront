@@ -3,24 +3,16 @@
 <button (click)="fetchlisteMatch()">Fetch liste</button>
 <hr/>
 
+<ng-table class=" listMatch">
+  <tr>
+    <th>Pseudo</th>
+  </tr>
+  <tr>
+    <td>
+      <li  *ngFor="let utilisateur of liste| async">
+        {{utilisateur.pseudo}}
+    </td>
+  </tr>
+</ng-table>
 
-
-
-
-
-
-<ngx-slick-carousel class="carousel"
-                    #slickModal="slick-carousel"
-                    [config]="slideConfig">
-  <ng-table class=" listMatch">
-    <tr>
-      <th>Pseudo</th>
-    </tr>
-    <tr>
-      <td>
-        <li  ngxSlickItem *ngFor="let utilisateur of liste| async" class= "slide">
-          {{utilisateur.pseudo}}
-      </td>
-    </tr>
-  </ng-table>
-</ngx-slick-carousel>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

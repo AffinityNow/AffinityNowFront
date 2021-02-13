@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import{SlickCarouselModule} from 'ngx-slick-carousel';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {HomeComponent} from './shared/home/home.component';
 import {AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -11,7 +11,6 @@ import {HeaderComponent } from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './user/login/login.component';
 import {MatchServiceService} from './shared/service/match-service.service';
-
 import {SignupComponent} from './user/signup/signup.component';
 import {FormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
@@ -24,6 +23,8 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import {DropdownModule} from 'primeng/dropdown';
 import {LabelModule} from '@progress/kendo-angular-label';
 import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -73,7 +74,9 @@ const appRoutes: Routes = [
     InputsModule,
     DropdownModule,
     LabelModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService, MatchServiceService],
