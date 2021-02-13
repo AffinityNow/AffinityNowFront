@@ -1,18 +1,12 @@
 <p xmlns="http://www.w3.org/1999/html">La liste des matchs </p>
 
-<button (click)="fetchlisteMatch()">Fetch liste</button>
-<hr/>
-
-<ng-table class=" listMatch">
-  <tr>
-    <th>Pseudo</th>
-  </tr>
-  <tr>
-    <td>
-      <li  *ngFor="let utilisateur of liste| async">
-        {{utilisateur.pseudo}}
-    </td>
-  </tr>
-</ng-table>
-
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<div>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="pseudo">
+      <mat-header-cell *matHeaderCellDef> Pseudo</mat-header-cell>
+      <mat-cell *matCellDef="let utilisateur">{{utilisateur.pseudo}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
+  </mat-table>
+</div>

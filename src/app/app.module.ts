@@ -16,7 +16,6 @@ import {FormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
-
 import {GridModule, RowFilterModule} from '@progress/kendo-angular-grid';
 import {DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { InputsModule } from '@progress/kendo-angular-inputs';

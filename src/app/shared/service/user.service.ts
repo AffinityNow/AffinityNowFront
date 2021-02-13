@@ -7,8 +7,7 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class UserService {
   readonly rootUrl = 'http://localhost:8080/utilisateur';
-
-  constructor(private http: HttpClient) {
+   constructor(private http: HttpClient) {
   }
 
   registerUser(user: User): Observable<User> {
