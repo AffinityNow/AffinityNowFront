@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
+import{SlickCarouselModule} from 'ngx-slick-carousel';
 import {HomeComponent} from './shared/home/home.component';
 import {AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -72,7 +72,8 @@ const appRoutes: Routes = [
     RowFilterModule,
     InputsModule,
     DropdownModule,
-    LabelModule
+    LabelModule,
+    SlickCarouselModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService, MatchServiceService],

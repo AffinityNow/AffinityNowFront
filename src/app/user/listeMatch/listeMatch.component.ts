@@ -7,13 +7,13 @@ import {MatchServiceService} from '../../shared/service/match-service.service';
   styleUrls: ['./listeMatch.component.css']
 })
 export class ListeMatchComponent implements OnInit {
+  constructor(private listeMatchService: MatchServiceService ) { }
   liste;
   title = 'AffinityNowFront';
-  constructor(private listeMatchService: MatchServiceService ) { }
+slideConfig = {"slideToShow": 1, "slideToScroll": 1};
   fetchlisteMatch() {
     this.liste = this.listeMatchService.fetchListeMatch();
   }
-
   ngOnInit(): void {
   }
 }
