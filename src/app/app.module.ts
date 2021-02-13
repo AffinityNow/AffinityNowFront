@@ -9,11 +9,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from './shared/footer/footer.component';
 import {HeaderComponent } from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {LoginComponent} from './user/login/login.component';
 import {MatchServiceService} from './shared/service/match-service.service';
 
 import {SignupComponent} from './user/signup/signup.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
@@ -24,6 +23,9 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import {DropdownModule} from 'primeng/dropdown';
 import {LabelModule} from '@progress/kendo-angular-label';
 import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
+import { MatchOptionComponent } from './user/matchOption/matchOption.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+
 
 
 
@@ -34,16 +36,16 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: 'signup',
     component: SignupComponent
   },
   {
     path: 'listeMatch',
     component: ListeMatchComponent
+  },
+  {
+    path: 'matchOption',
+    component: MatchOptionComponent
   },
 ];
 @NgModule({
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     SignupComponent,
-    ListeMatchComponent
+    ListeMatchComponent,
+    MatchOptionComponent
     ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -72,7 +75,10 @@ const appRoutes: Routes = [
     RowFilterModule,
     InputsModule,
     DropdownModule,
-    LabelModule
+    LabelModule,
+    NgSelectModule,
+    ReactiveFormsModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService, MatchServiceService],
