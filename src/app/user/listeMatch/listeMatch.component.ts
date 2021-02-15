@@ -13,9 +13,8 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ListeMatchComponent implements AfterViewInit{
   dataSource = new UserDataSource(this.listeMatchService);
-  displayedColums = ['pseudo', 'id', 'quality'];
-
-  constructor(private listeMatchService: MatchServiceService) {
+  displayedColums = ['pseudo', 'quality'];
+   constructor(private listeMatchService: MatchServiceService) {
 
   }
   title = 'AffinityNowFront';

@@ -7,13 +7,6 @@
       <mat-cell *matCellDef="let mUser">{{mUser.mUser.pseudo}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> id</mat-header-cell>
-      <mat-cell *matCellDef="let mUser">{{mUser.mUser.id}}</mat-cell>
-    </ng-container>
-
-
-
     <ng-container matColumnDef="quality">
       <mat-header-cell *matHeaderCellDef> quality </mat-header-cell>
       <mat-cell *matCellDef="let mUser">{{mUser.quality}}</mat-cell>
@@ -35,9 +28,5 @@
   <mat-paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
 </div>
 
-<mat-form-fields>
-  <mat-select>
-    <mat-label>coco</mat-label>
-    <mat-option> test </mat-option>
-  </mat-select>
-</mat-form-fields>
+
+
