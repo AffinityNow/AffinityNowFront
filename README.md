@@ -11,12 +11,12 @@ Written in JAVA, CometChat and Firebase services.
    ......coming soon
 
 ### Features
-
+   * Create user profile (Username)
    * Match people based on mutual interest 
+   * Authentication and choosing match method
 
    ......coming soon
-   * Authentication
-   * Create user profile (Username)
+
    * Search users by Username
    * Send audio messages, text, graphic, messages
    * Check message read/delivery status

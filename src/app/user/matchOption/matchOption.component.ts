@@ -24,9 +24,9 @@ export class MatchOptionComponent implements OnInit {
 
   selectedMethods = 3;
   matchMethods = [
-    {id: 1, name: 'Match mehode 1'},
-    {id: 2, name: 'Match mehode 2', disabled: true},
-    {id: 3, name: 'Match mehode 3'},
+    {id: 1, name: 'scoreBool'},
+    {id: 2, name: 'scoreDouble'},
+    {id: 3, name: 'seekedDouble'},
     {id: 4, name: 'Match mehode 4', disabled: true},
   ];
 
@@ -47,7 +47,8 @@ export class MatchOptionComponent implements OnInit {
     }
     this.userService.getMachedUsers(this.user.userName, res.name )
       .subscribe(data => {
-        this.toastr.success('User registration successful');
+        this.toastr.success('User login successful');
+        console.log(data);
       }, error => {
         this.toastr.error('Something went wrong', 'Error', {
           positionClass: 'toast-top-center',
