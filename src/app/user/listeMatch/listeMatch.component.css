@@ -1,14 +1,18 @@
-
-
-.listMatch {
-  border: medium solid #000000;
-  width: 4cm;
-  background-color: lightblue;
-  color: black;
-  text-align: left;
+table {
+  width: 50%;
 }
-td, th {
-  border:  solid black;
-  width: 10%;
-
+h1
+{
+  font-size: 32px;
+  text-shadow: -1px -1px #DF4A1B, 1px 1px #DF1B1B, -3px 0 4px #BB0F0F;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #BB0F0F;
+  padding:16px;
+  font-weight:lighter;
+  -moz-box-shadow: 2px 2px 6px #888;
+  -webkit-box-shadow: 2px 2px 6px #888;
+  box-shadow:2px 2px 6px #888;
+  text-align:center;
+  display:block;
+  margin:16px;
 }
