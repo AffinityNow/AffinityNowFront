@@ -34,7 +34,7 @@ export class UserService {
   }
 
   getMachedUsers(userName: String, methodName:String[]) : Observable<any>{
-    return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+"laméthodequetuveux");
+    return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName);
   }
 
 
