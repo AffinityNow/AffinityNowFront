@@ -1,14 +1,14 @@
 <div class="container">
   <h1 style="font-size: 30px; text-align: center">Login Form </h1>
-  <form (ngSubmit)="login()">
+  <form (ngSubmit)="login()" name="form">
     <label>Enter username: </label>
 
-    <input type="text" name="username"[(ngModel)]="user.userName" required />
+    <input type="text" name="username" #uname="ngModel" [(ngModel)]="user.userName" required />
 
     <br/><br/>
-<!--    <ng-container *ngIf="uname.touched && uname.invalid">-->
-<!--      <p [ngStyle]="{'color': check}">Username is Invalid </p>-->
-<!--    </ng-container>-->
+    <ng-container *ngIf="uname.touched && uname.invalid">
+      <p [ngStyle]="{'color': check}">Username is Invalid </p>
+    </ng-container>
 
     <br>
     <p>
@@ -28,8 +28,11 @@
 <!--                 [disabled]="method.disabled">{{method.name}}</ng-option>-->
 <!--&lt;!&ndash;      <ng-option [value]="'custom'">Custom</ng-option>&ndash;&gt;-->
 <!--    </ng-select>-->
-    <button [disabled]="!form.valid" class="k-button k-primary" type="submit">Go</button>
-    <button class="k-button" (click)="clearForm()">Effacer</button>
+    <div style="margin-left:36%; margin-top: 5%">
+      <button [disabled]="!form.valid" class="k-button k-primary" type="submit" style="width:20%;">Go</button>
+      <button  (click)="clearForm()"class="k-button" style="width:20%;">Reset</button>
+    </div>
+
     <br/>Selected car ID: {{selectedMethods | json}}
   </form>
 </div>

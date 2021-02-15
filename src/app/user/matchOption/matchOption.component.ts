@@ -27,9 +27,8 @@ export class MatchOptionComponent implements OnInit {
     {id: 1, name: 'Match mehode 1'},
     {id: 2, name: 'Match mehode 2', disabled: true},
     {id: 3, name: 'Match mehode 3'},
-    {id: 4, name: 'Match mehode 4'},
+    {id: 4, name: 'Match mehode 4', disabled: true},
   ];
-
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(),
