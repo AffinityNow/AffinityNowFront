@@ -9,7 +9,7 @@ import {User} from '../model/user.model';
   providedIn: 'root'
 })
 export class MatchServiceService {
-  private serviceUrl = 'http://localhost:8080/utilisateur/10/match/score';
+  private serviceUrl = 'http://localhost:8080/utilisateur/jean/match/scoreDouble';
   constructor(private http: HttpClient){}
   getUser(): Observable<Utilisateur[]>{
     return this.http.get<Utilisateur[]>(this.serviceUrl);

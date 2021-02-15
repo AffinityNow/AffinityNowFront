@@ -24,10 +24,7 @@ import {LabelModule} from '@progress/kendo-angular-label';
 import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
-
-
-
-
+import {MatSelectModule} from '@angular/material/select';
 const appRoutes: Routes = [
   {
     path: '',
@@ -53,7 +50,7 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     SignupComponent,
-    ListeMatchComponent
+    ListeMatchComponent,
     ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -75,7 +72,8 @@ const appRoutes: Routes = [
     LabelModule,
     SlickCarouselModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService, MatchServiceService],
