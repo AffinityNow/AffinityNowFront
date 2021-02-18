@@ -1,22 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TopicService} from '../../shared/service/TopicService';
-import {PrimeNGConfig} from 'primeng/api';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-match-option',
   templateUrl: './matchOption.component.html',
-  styleUrls: ['./matchOption.component.css']
+  styleUrls: ['./matchOption.component.css'],
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
+  resMatch;
 
   constructor(private userService: UserService,
               private toastr: ToastrService) {
-
   }
 
   ngOnInit(): void {
@@ -36,6 +35,7 @@ export class MatchOptionComponent implements OnInit {
 
   check = 'red';
   colors = ['red', 'yellow', 'green'];
+  pseudo:String = "votre pseudo";
 
   login() {
     const res: any = this.matchMethods.find(m=> m.id==this.selectedMethods);
@@ -47,17 +47,18 @@ export class MatchOptionComponent implements OnInit {
     }
     this.userService.getMachedUsers(this.user.userName, res.name )
       .subscribe(data => {
-        this.toastr.success('User login successful');
-        console.log(data);
+        this.toastr.success('Maching avec succes');
+        this.resMatch = data;
+        console.log('match result',this.resMatch);
       }, error => {
-        this.toastr.error('Something went wrong', 'Error', {
+        this.toastr.error(' Utilisateur inconnu', 'Error', {
           positionClass: 'toast-top-center',
         });
       });
   }
 
-  public clearForm(): void {
-    this.form.reset();
+  refresh(): void {
+    window.location.reload();
   }
 }
 
