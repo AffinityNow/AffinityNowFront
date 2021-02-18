@@ -1,8 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
+import {MatchMethods} from '../../shared/model/topic.model';
+
+
 
 
 @Component({
@@ -13,20 +16,20 @@ import {ToastrService} from 'ngx-toastr';
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
   resMatch;
+  methods: any[];
 
   constructor(private userService: UserService,
               private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
   }
 
-  selectedMethods = 3;
+  selectedMethods ;
   matchMethods = [
-    {id: 1, name: 'scoreBool'},
-    {id: 2, name: 'scoreDouble'},
-    {id: 3, name: 'seekedDouble'},
-    {id: 4, name: 'Match mehode 4', disabled: true},
+    {id: 1, name: 'scoreDouble'},
+    {id: 2, name: 'seekedDouble'},
   ];
 
   public form: FormGroup = new FormGroup({
@@ -35,17 +38,23 @@ export class MatchOptionComponent implements OnInit {
 
   check = 'red';
   colors = ['red', 'yellow', 'green'];
-  pseudo:String = "Your pseudo";
+  pseudo:String = "          Your pseudo";
+
+  getResMethodMatch(libelle: string) : void{
+    this.selectedMethods = libelle;
+
+  }
 
   login() {
-    const res: any = this.matchMethods.find(m=> m.id==this.selectedMethods);
+    const res: any = this.selectedMethods;
+    console.log('hello',res);
       if(!res){
-      this.toastr.error('No topic is noted!', 'Error', {
+      this.toastr.error('Pic a method !', 'Error', {
         positionClass: 'toast-top-center',
       });
       return;
     }
-    this.userService.getMachedUsers(this.user.userName, res.name )
+    this.userService.getMachedUsers(this.user.userName, res )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
         this.resMatch = data;
@@ -60,6 +69,7 @@ export class MatchOptionComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
+
 }
 
 
