@@ -85,7 +85,7 @@ const appRoutes: Routes = [
     MatSelectModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpClient, TopicService, UserService, MatchServiceService],
+  providers: [HttpClient, TopicService, UserService, MatchServiceService, MatchOptionComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
