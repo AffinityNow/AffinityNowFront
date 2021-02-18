@@ -1,7 +1,7 @@
 <div class="container">
   <h1 style="font-size: 30px; text-align: center">Login Form </h1>
   <form (ngSubmit)="login()" name="form">
-    <label>Enter username: </label>
+    <label>Username: </label>
 
     <label>
       <input type="text" name="username" #uname="ngModel"
@@ -11,12 +11,12 @@
 
     <br/><br/>
     <ng-container *ngIf="uname.touched && uname.invalid">
-      <p [ngStyle]="{'color': check}">Veuillez saisir votre pseudo</p>
+      <p [ngStyle]="{'color': check}">Username is missing</p>
     </ng-container>
 
     <br>
     <p>
-      Veuillez choisir quel type de match vous intéresse
+      Choose your Match Method
     </p>
 
     <br>
@@ -35,6 +35,6 @@
     </div>
   </form>
   <div *ngIf="resMatch">
-    <app-liste-match [dataSource]="resMatch"></app-liste-match>
+    <app-list-match [dataSource]="resMatch"></app-list-match>
   </div>
 </div>

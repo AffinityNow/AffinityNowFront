@@ -3,7 +3,7 @@ import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-match-option',
@@ -35,7 +35,7 @@ export class MatchOptionComponent implements OnInit {
 
   check = 'red';
   colors = ['red', 'yellow', 'green'];
-  pseudo:String = "votre pseudo";
+  pseudo:String = "Your pseudo";
 
   login() {
     const res: any = this.matchMethods.find(m=> m.id==this.selectedMethods);
@@ -47,11 +47,11 @@ export class MatchOptionComponent implements OnInit {
     }
     this.userService.getMachedUsers(this.user.userName, res.name )
       .subscribe(data => {
-        this.toastr.success('Maching avec succes');
+        this.toastr.success('Maching succeeded');
         this.resMatch = data;
         console.log('match result',this.resMatch);
       }, error => {
-        this.toastr.error(' Utilisateur inconnu', 'Error', {
+        this.toastr.error(' unknown User', 'Error', {
           positionClass: 'toast-top-center',
         });
       });

@@ -3,12 +3,12 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 
 @Component({
-  selector: 'app-liste-match',
-  templateUrl: './listeMatch.component.html',
-  styleUrls: ['./listeMatch.component.css']
+  selector: 'app-list-match',
+  templateUrl: './listMatch.component.html',
+  styleUrls: ['./listMatch.component.css']
 })
 //child
-export class ListeMatchComponent implements AfterViewInit {
+export class ListMatchComponent implements AfterViewInit {
   @Input() dataSource;
   displayedColums = ['pseudo', 'quality'];
 

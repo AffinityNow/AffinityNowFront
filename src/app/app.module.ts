@@ -25,7 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatchOptionComponent} from './user/matchOption/matchOption.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
-import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
+import {ListMatchComponent} from './user/listMatch/listMatch.component';
 
 
 const appRoutes: Routes = [
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     SignupComponent,
     MatchOptionComponent,
-    ListeMatchComponent
+    ListMatchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

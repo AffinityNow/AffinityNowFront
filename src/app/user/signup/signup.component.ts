@@ -68,7 +68,7 @@ export class SignupComponent {
   }
 
   public clearForm(): void {
-    this.form.reset();
+    window.location.reload();
   }
 }
 
