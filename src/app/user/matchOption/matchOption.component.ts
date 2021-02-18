@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TopicService} from '../../shared/service/TopicService';
@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
+  @Input() resMatch:any;
 
   constructor(private userService: UserService,
               private toastr: ToastrService) {
@@ -48,7 +49,8 @@ export class MatchOptionComponent implements OnInit {
     this.userService.getMachedUsers(this.user.userName, res.name )
       .subscribe(data => {
         this.toastr.success('User login successful');
-        console.log(data);
+        this.resMatch = data;
+        console.log('match result',this.resMatch);
       }, error => {
         this.toastr.error('Something went wrong', 'Error', {
           positionClass: 'toast-top-center',
