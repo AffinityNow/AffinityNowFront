@@ -8,15 +8,14 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-match-option',
   templateUrl: './matchOption.component.html',
-  styleUrls: ['./matchOption.component.css']
+  styleUrls: ['./matchOption.component.css'],
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
-  @Input() resMatch:any;
+  resMatch;
 
   constructor(private userService: UserService,
-              private toastr: ToastrService, private router: Router) {
-
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +35,7 @@ export class MatchOptionComponent implements OnInit {
 
   check = 'red';
   colors = ['red', 'yellow', 'green'];
+  pseudo:String = "votre pseudo";
 
   login() {
     const res: any = this.matchMethods.find(m=> m.id==this.selectedMethods);
@@ -47,21 +47,18 @@ export class MatchOptionComponent implements OnInit {
     }
     this.userService.getMachedUsers(this.user.userName, res.name )
       .subscribe(data => {
-        this.toastr.success('User login successful');
+        this.toastr.success('Maching avec succes');
         this.resMatch = data;
         console.log('match result',this.resMatch);
       }, error => {
-        this.toastr.error(' Unknown User', 'Error', {
+        this.toastr.error(' Utilisateur inconnu', 'Error', {
           positionClass: 'toast-top-center',
         });
       });
   }
 
-  public clearForm(): void {
-    this.form.reset();
-  }
-  redirect() {
-    this.router.navigate(['./listeMatch']);
+  refresh(): void {
+    window.location.reload();
   }
 }
 

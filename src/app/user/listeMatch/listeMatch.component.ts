@@ -1,24 +1,18 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatchServiceService} from '../../shared/service/match-service.service';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {Observable} from 'rxjs';
-import {DataSource} from '@angular/cdk/collections';
-import {Utilisateur} from '../../shared/model/utilisateur.model';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatchOptionComponent} from '../matchOption/matchOption.component';
 
 @Component({
   selector: 'app-liste-match',
   templateUrl: './listeMatch.component.html',
   styleUrls: ['./listeMatch.component.css']
 })
+//child
 export class ListeMatchComponent implements AfterViewInit {
-  dataSource =this.matchOptionComponent.resMatch;
+  @Input() dataSource;
   displayedColums = ['pseudo', 'quality'];
 
-  constructor(private matchOptionComponent: MatchOptionComponent) {
-    console.log('hello', matchOptionComponent.resMatch);
+  constructor() {
   }
 
   title = 'AffinityNowFront';
@@ -31,18 +25,3 @@ export class ListeMatchComponent implements AfterViewInit {
   }
 }
 
-//
-// export class UserDataSource extends DataSource<any> {
-//   constructor(private listeMatchService: MatchServiceService) {
-//     super();
-//
-//   }
-//
-//   connect(): Observable<Utilisateur[]> {
-//     return this.listeMatchService.getUser();
-//   }
-//
-//   disconnect() {
-//   }
-//
-// }

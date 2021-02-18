@@ -1,34 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {HomeComponent} from './shared/home/home.component';
-import {AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from './shared/footer/footer.component';
-import {HeaderComponent } from './shared/header/header.component';
+import {HeaderComponent} from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {MatchServiceService} from './shared/service/match-service.service';
 import {SignupComponent} from './user/signup/signup.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
 import {GridModule, RowFilterModule} from '@progress/kendo-angular-grid';
-import {DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { InputsModule } from '@progress/kendo-angular-inputs';
+import {DropDownsModule} from '@progress/kendo-angular-dropdowns';
+import {InputsModule} from '@progress/kendo-angular-inputs';
 import {DropdownModule} from 'primeng/dropdown';
 import {LabelModule} from '@progress/kendo-angular-label';
-import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
-import { MatchOptionComponent } from './user/matchOption/matchOption.component';
+import {MatchOptionComponent} from './user/matchOption/matchOption.component';
 import {NgSelectModule} from '@ng-select/ng-select';
-
-
-
+import {MatSortModule} from '@angular/material/sort';
+import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
 
 
 const appRoutes: Routes = [
@@ -39,10 +36,6 @@ const appRoutes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
-  },
-  {
-    path: 'listeMatch',
-    component: ListeMatchComponent
   },
   {
     path: 'matchOption',
@@ -56,9 +49,9 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     SignupComponent,
-    ListeMatchComponent,
-    MatchOptionComponent
-    ],
+    MatchOptionComponent,
+    ListeMatchComponent
+  ],
   imports: [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
@@ -82,10 +75,11 @@ const appRoutes: Routes = [
     SlickCarouselModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpClient, TopicService, UserService, MatchServiceService, MatchOptionComponent],
+  providers: [HttpClient, TopicService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
