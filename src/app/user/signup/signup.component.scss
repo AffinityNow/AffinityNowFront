@@ -1,10 +1,11 @@
-.registration{
+.registration {
   text-align: center;
 }
+
 .k-form {
   padding: 5%;
   width: 240px;
-  margin-left: 12%;
+  margin-left: 5%;
 }
 
 p {
@@ -17,8 +18,8 @@ p {
   float: left;
 }
 
-li{
-  float:left;
+li {
+  float: left;
 }
 
 .k-button {
@@ -26,7 +27,21 @@ li{
 }
 
 .toast-top-center {
-    top: 12px;
-    margin: 0 auto;
-  };
+  top: 12px;
+  margin: 0 auto;
+}
 
+;
+
+.k-grid {
+  font-size: 18px;
+}
+
+.loginForm{
+  height: 50px !important;
+  width: 30% !important;
+}
+
+.topicForm{
+  margin-top: 3%;
+}
