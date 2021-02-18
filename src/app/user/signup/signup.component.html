@@ -27,35 +27,35 @@
                            [headerStyle]="{'font-size' : '1.5em'}"
         ></kendo-grid-column>
 
-        <kendo-grid-column field="RateItem.name"
+        <kendo-grid-column field="LakedItem.name"
                            title="Mark out your favorite ones"
                            [width]="600"
                            [headerStyle]="{'font-size' : '1.5em'}"
                            [filterable]="false">
 
-          <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <ng-template kendoGridCellTemplate let-dataItem1 let-rowIndex="rowIndex">
             <kendo-combobox [data]="ratings"
                             #score required
                             [textField]="'name'"
                             [valueField]="'score'"
-                            [(value)]="dataItem.rate"
+                            [(value)]="dataItem1.rate"
                             [placeholder]="'Select a Mark...'">
             </kendo-combobox>
           </ng-template>
         </kendo-grid-column>
 
-        <kendo-grid-column field="RateItem.name"
+        <kendo-grid-column field="SeekedItem.name"
                            title="Mark out your seeked ones"
                            [width]="600"
                            [headerStyle]="{'font-size' : '1.5em'}"
                            [filterable]="false">
 
-          <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <ng-template kendoGridCellTemplate let-dataItem2 let-rowIndex="rowIndex">
             <kendo-combobox [data]="ratings"
                             #score required
                             [textField]="'name'"
                             [valueField]="'score'"
-                            [(value)]="dataItem.rate"
+                            [(value)]="dataItem2.rate"
                             [placeholder]="'Select a Mark...'">
             </kendo-combobox>
           </ng-template>
