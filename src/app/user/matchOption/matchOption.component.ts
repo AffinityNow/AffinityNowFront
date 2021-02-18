@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TopicService} from '../../shared/service/TopicService';
-import {PrimeNGConfig} from 'primeng/api';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-match-option',
@@ -16,7 +15,7 @@ export class MatchOptionComponent implements OnInit {
   @Input() resMatch:any;
 
   constructor(private userService: UserService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService, private router: Router) {
 
   }
 
@@ -52,7 +51,7 @@ export class MatchOptionComponent implements OnInit {
         this.resMatch = data;
         console.log('match result',this.resMatch);
       }, error => {
-        this.toastr.error('Something went wrong', 'Error', {
+        this.toastr.error(' Unknown User', 'Error', {
           positionClass: 'toast-top-center',
         });
       });
@@ -60,6 +59,9 @@ export class MatchOptionComponent implements OnInit {
 
   public clearForm(): void {
     this.form.reset();
+  }
+  redirect() {
+    this.router.navigate(['./listeMatch']);
   }
 }
 
