@@ -1,20 +1,10 @@
 <div class="container">
-  <h1>Search Form </h1>
+  <h1>Maching Form </h1>
   <p>Please pic your match method and enter your username</p>
-  <form class="username" (ngSubmit)="login()" name="form">
-    <div class=".container-lg" style="width: 40%; margin-left: 30%">
-      <div class="carousel">
-        <p-carousel [value]="methods" [numVisible]="1" [numScroll]="1" [circular]="false">
-          <ng-template let-method pTemplate="item">
-            <div><img [src]="method.icon"
-                      (click)="getResMethodMatch(method.libelle)"
-                      [ngClass]="{'green': toggle, 'white': !toggle}"
-                      alt="method icon" width="200" height="300"/>
-            </div>
-          </ng-template>
-        </p-carousel>
-      </div>
-
+  <!--  form-->
+  <form class="matchForm" (ngSubmit)="login()" name="form">
+    <!--username input-->
+    <div class=username>
       <label style="margin-right: 3%">Username: </label>
       <label>
         <input type="text" name="username" #uname="ngModel"
@@ -25,18 +15,52 @@
       <ng-container *ngIf="uname.touched && uname.invalid">
         <p [ngStyle]="{'color': check, 'font-size': '14px'}">Username is missing</p>
       </ng-container>
-
       <br><br>
-
-      <div>
-        <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Go"
-                style="width:30%;" [disabled]="!form.valid"></button>
-        <button pButton type="button" class="p-button-raised p-button-secondary" icon="fa-times" label="Reset"
-                style="width:30%;" (click)="refresh()"></button>
+    </div>
+    <!--    carousel-->
+    <div class=".container-lg" style="width: 40%; margin-left: 30%">
+      <div class="carousel">
+        <p-carousel [value]="methods" [numVisible]="1" [numScroll]="1" [circular]="false">
+          <ng-template let-method pTemplate="item">
+            <div>
+              <img [src]="method.icon"
+                   (click)="getResMethodMatch(method.libelle)"
+                   [ngClass]="{'green': toggle, 'white': !toggle}"
+                   alt="method icon" width="200" height="300"/>
+            </div>
+          </ng-template>
+        </p-carousel>
       </div>
 
     </div>
+
+    <!--include exclude topics-->
+    <div>
+    <div class="radioButton">
+    <p-radioButton name="groupname" value="val1"  label="Include" [(ngModel)]="selectedValue" style="padding-right: 2%"></p-radioButton>
+    <p-radioButton name="groupname" value="val2"  label="Exclude" [(ngModel)]="selectedValue"></p-radioButton>
+    </div>
+    <p-multiSelect [options]="topics"
+                   [(ngModel)]="selectedTopics"
+                   defaultLabel="Select Topics"
+                   optionLabel="name"
+                   display="chip">
+    </p-multiSelect>
+    </div>
+    <br><br>
+
+    <!--submit/reset buttons-->
+    <div style="text-align: center">
+      <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Go"
+              style="width:20%;" [disabled]="!form.valid">
+      </button>
+      <button pButton type="button" class="p-button-raised p-button-secondary" icon="fa-times" label="Reset"
+              style="width:20%;" (click)="refresh()">
+      </button>
+    </div>
   </form>
+
+  <!--showing match results-->
   <div *ngIf="resMatch">
     <app-match-res [dataSource]="resMatch"></app-match-res>
   </div>

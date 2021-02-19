@@ -3,7 +3,9 @@ import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
-import {MatchMethods} from '../../shared/model/topic.model';
+import {MatchMethods, Topic} from '../../shared/model/topic.model';
+import {PrimeNGConfig} from 'primeng/api';
+import {TopicService} from '../../shared/service/TopicService';
 
 
 @Component({
@@ -14,19 +16,35 @@ import {MatchMethods} from '../../shared/model/topic.model';
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
   resMatch;
-  methods: any[];
+  methods;
   selectedMethods;
   check = 'red';
   pseudo:String = "          Your pseudo";
   toggle = false;
+  topics: Topic[];
+  selectedTopics: Topic[] = [];
+  selectedValue: string = 'val1';
 
+  // stateOptions: any[];
+  // value1: string = "include";
 
   constructor(private userService: UserService,
+              private topicService: TopicService,
+              private primengConfig: PrimeNGConfig,
               private toastr: ToastrService) {
+    // this.stateOptions = [
+    //   { label: "Include", value: "include" },
+    //   { label: "Exclude", value: "exclude" }
+    // ];
   }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
+    this.topicService.getTopics().then((topic) => {
+      this.topics=topic;
+      }
+    );
   }
 
   public form: FormGroup = new FormGroup({
