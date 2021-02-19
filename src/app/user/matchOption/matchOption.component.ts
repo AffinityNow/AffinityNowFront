@@ -18,6 +18,8 @@ export class MatchOptionComponent implements OnInit {
   selectedMethods;
   check = 'red';
   pseudo:String = "          Your pseudo";
+  toggle = false;
+
 
   constructor(private userService: UserService,
               private toastr: ToastrService) {
@@ -33,7 +35,7 @@ export class MatchOptionComponent implements OnInit {
 
   getResMethodMatch(libelle: string) : void{
     this.selectedMethods = libelle;
-
+    this.toggle = !this.toggle;
   }
 
   login() {
@@ -54,6 +56,7 @@ export class MatchOptionComponent implements OnInit {
           positionClass: 'toast-top-center',
         });
       });
+    this.toggle = false;
   }
 
   refresh(): void {

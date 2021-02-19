@@ -1,36 +1,41 @@
 <div class="container">
   <h1>Search Form </h1>
   <p>Please pic your match method and enter your username</p>
-  <form class= "username" (ngSubmit)="login()" name="form">
-  <div class=".container-lg" style="width: 40%; margin-left: 30%">
-    <div class="carousel">
-      <p-carousel [value]="methods" [numVisible]="1" [numScroll]="1" [circular]="false">
-        <ng-template let-method pTemplate="item">
-          <div><img [src]="method.icon" (click)="getResMethodMatch(method.libelle)" alt="method icon"width="200" height="300"/>
-          </div>
-        </ng-template>
-      </p-carousel>
+  <form class="username" (ngSubmit)="login()" name="form">
+    <div class=".container-lg" style="width: 40%; margin-left: 30%">
+      <div class="carousel">
+        <p-carousel [value]="methods" [numVisible]="1" [numScroll]="1" [circular]="false">
+          <ng-template let-method pTemplate="item">
+            <div><img [src]="method.icon"
+                      (click)="getResMethodMatch(method.libelle)"
+                      [ngClass]="{'green': toggle, 'white': !toggle}"
+                      alt="method icon" width="200" height="300"/>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+
+      <label style="margin-right: 3%">Username: </label>
+      <label>
+        <input type="text" name="username" #uname="ngModel"
+               [placeholder]="pseudo"
+               [ngStyle]="{'font-size': '18px', 'border-radius': '20%', 'border': 'green'}"
+               [(ngModel)]="user.userName" required/>
+      </label>
+      <ng-container *ngIf="uname.touched && uname.invalid">
+        <p [ngStyle]="{'color': check, 'font-size': '14px'}">Username is missing</p>
+      </ng-container>
+
+      <br><br>
+
+      <div>
+        <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Go"
+                style="width:30%;" [disabled]="!form.valid"></button>
+        <button pButton type="button" class="p-button-raised p-button-secondary" icon="fa-times" label="Reset"
+                style="width:30%;" (click)="refresh()"></button>
+      </div>
+
     </div>
-
-    <label style="margin-right: 3%">Username: </label>
-    <label>
-      <input type="text" name="username" #uname="ngModel"
-             [placeholder]="pseudo"
-             [ngStyle]="{'font-size': '18px', 'border-radius': '20%', 'border': 'green'}"
-             [(ngModel)]="user.userName" required />
-    </label>
-    <ng-container *ngIf="uname.touched && uname.invalid">
-      <p [ngStyle]="{'color': check, 'font-size': '14px'}">Username is missing</p>
-    </ng-container>
-
-    <br><br>
-
-    <div class="text-right">
-      <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Go" style="width:30%;" [disabled]="!form.valid"></button>
-      <button pButton type="button" class="p-button-raised p-button-secondary" icon="fa-times" label="Reset" style="width:30%;" (click)="refresh()"></button>
-    </div>
-
-  </div>
   </form>
   <div *ngIf="resMatch">
     <app-match-res [dataSource]="resMatch"></app-match-res>
