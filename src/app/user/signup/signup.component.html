@@ -27,7 +27,7 @@
                            [headerStyle]="{'font-size' : '1.5em'}"
         ></kendo-grid-column>
 
-        <kendo-grid-column field="LakedItem.name"
+        <kendo-grid-column field="LikedItem.name"
                            title="Mark out your favorite ones"
                            [width]="600"
                            [headerStyle]="{'font-size' : '1.5em'}"
@@ -38,7 +38,7 @@
                             #score required
                             [textField]="'name'"
                             [valueField]="'score'"
-                            [(value)]="dataItem1.rate"
+                            [(value)]="dataItem1.liked"
                             [placeholder]="'Select a Mark...'">
             </kendo-combobox>
           </ng-template>
@@ -55,7 +55,7 @@
                             #score required
                             [textField]="'name'"
                             [valueField]="'score'"
-                            [(value)]="dataItem2.rate"
+                            [(value)]="dataItem2.seeked"
                             [placeholder]="'Select a Mark...'">
             </kendo-combobox>
           </ng-template>

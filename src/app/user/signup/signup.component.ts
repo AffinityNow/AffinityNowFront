@@ -39,7 +39,7 @@ export class SignupComponent {
 
     this.topicService.getTopics().then((topic) => {
         console.log(topic);
-        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5]));
+        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5], this.ratings[5]));
       }
     );
   }
@@ -49,9 +49,8 @@ export class SignupComponent {
   });
 
 
-
   public sign_up(): void {
-    if (this.user.topics.every(ratedTopic => ratedTopic.rate.score == 'ZERO')) {
+    if (this.user.topics.every(ratedTopic => ratedTopic.liked.score == 'ZERO')) {
       this.toastr.error('No topic is noted!', 'Error', {
         positionClass: 'toast-top-center',
       });
