@@ -50,8 +50,9 @@ export class SignupComponent {
 
 
   public sign_up(): void {
-    if (this.user.topics.every(ratedTopic => ratedTopic.liked.score == 'ZERO')) {
-      this.toastr.error('No topic is noted!', 'Error', {
+    if (this.user.topics.every(ratedTopic => ratedTopic.liked.score == 'ZERO') ||
+      this.user.topics.every(ratedTopic => ratedTopic.seeked.score == 'ZERO')) {
+      this.toastr.error('Please mark out topics!', 'Error', {
         positionClass: 'toast-top-center',
       });
       return;

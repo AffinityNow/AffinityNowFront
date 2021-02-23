@@ -26,6 +26,7 @@ import {MatchOptionComponent} from './user/matchOption/matchOption.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
+import {ButtonModule} from 'primeng/button';
 
 
 const appRoutes: Routes = [
@@ -76,7 +77,8 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatSortModule
+    MatSortModule,
+    ButtonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],

@@ -62,11 +62,16 @@
         </kendo-grid-column>
 
       </kendo-grid>
-
-      <div class="k-form-buttons" style="margin-left:36%;">
-        <button [disabled]="!form.valid" class="k-button k-primary" (click)="sign_up()">Sign Up</button>
-        <button class="k-button" (click)="clearForm()">Reset</button>
+      <!--submit/reset buttons-->
+      <div style="text-align: center; margin-top: 2%">
+        <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Sign Up"
+                style="width:20%;" [disabled]="!form.valid" (click)="sign_up()">
+        </button>
+        <button pButton type="button" class="p-button-raised p-button-secondary" icon="fa-times" label="Reset"
+                style="width:20%;" (click)="clearForm()">
+        </button>
       </div>
+
     </fieldset>
   </form>
 </div>
