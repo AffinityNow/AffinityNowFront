@@ -37,8 +37,8 @@
     <!--include exclude topics-->
     <div>
     <div class="radioButton">
-    <p-radioButton name="groupname" value="val1"  label="Include" [(ngModel)]="selectedValue" style="padding-right: 2%"></p-radioButton>
-    <p-radioButton name="groupname" value="val2"  label="Exclude" [(ngModel)]="selectedValue"></p-radioButton>
+    <p-radioButton name="groupname" value="include"  label="Include" [(ngModel)]="selectedValue" style="padding-right: 2%"></p-radioButton>
+    <p-radioButton name="groupname" value="exclude"  label="Exclude" [(ngModel)]="selectedValue"></p-radioButton>
     </div>
     <p-multiSelect [options]="topics"
                    [(ngModel)]="selectedTopics"
@@ -61,7 +61,7 @@
   </form>
 
   <!--showing match results-->
-  <div *ngIf="resMatch">
-    <app-match-res [dataSource]="resMatch"></app-match-res>
+  <div *ngIf="matchRes">
+    <app-match-res [dataSource]="matchRes"></app-match-res>
   </div>
 </div>

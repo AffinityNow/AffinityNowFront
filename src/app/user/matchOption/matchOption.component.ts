@@ -15,7 +15,7 @@ import {TopicService} from '../../shared/service/TopicService';
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
-  resMatch;
+  matchRes;
   methods;
   selectedMethods;
   check = 'red';
@@ -23,10 +23,9 @@ export class MatchOptionComponent implements OnInit {
   toggle = false;
   topics: Topic[];
   selectedTopics: Topic[] = [];
-  selectedValue: string = 'val1';
+  selectedValue: string = 'include';
 
   // stateOptions: any[];
-  // value1: string = "include";
 
   constructor(private userService: UserService,
               private topicService: TopicService,
@@ -67,8 +66,8 @@ export class MatchOptionComponent implements OnInit {
     this.userService.getMachedUsers(this.user.userName, res )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
-        this.resMatch = data;
-        console.log('match result',this.resMatch);
+        this.matchRes = data;
+        console.log('match result',this.matchRes);
       }, error => {
         this.toastr.error(' unknown User', 'Error', {
           positionClass: 'toast-top-center',
