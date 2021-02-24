@@ -1,4 +1,10 @@
-footer {
-  color:black; background-color:#3B3B3B; border-bottom:1px solid #3B3B3B; height:10px;
+footer{
+  color: black;
+  link: black;
+  padding-bottom: 20px;
 }
+a{
+  color: black;
+}
+
 
