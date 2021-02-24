@@ -30,7 +30,6 @@ import {NgSelectModule} from '@ng-select/ng-select';
 
 
 
-
 const appRoutes: Routes = [
   {
     path: '',
@@ -57,7 +56,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     SignupComponent,
     ListeMatchComponent,
-    MatchOptionComponent
+    MatchOptionComponent,
     ],
   imports: [
     RouterModule.forRoot(appRoutes),
