@@ -18,11 +18,9 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class SignupComponent {
 
-  selection: RateItem;
-
   user: User = new User();
   ratings: RateItem [] = [
-    {name: '★★★★★', score: 'CINQ'},
+    {name: '★★★★★', score: 'CINQ',},
     {name: '★★★★', score: 'QUATRE'},
     {name: '★★★', score: 'TROIS'},
     {name: '★★', score: 'DEUX'},
@@ -41,7 +39,7 @@ export class SignupComponent {
 
     this.topicService.getTopics().then((topic) => {
         console.log(topic);
-        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5]));
+        this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5], this.ratings[5]));
       }
     );
   }
@@ -50,9 +48,11 @@ export class SignupComponent {
     username: new FormControl(),
   });
 
+
   public sign_up(): void {
-    if (this.user.topics.every(ratedTopic => ratedTopic.rate.score == 'ZERO')) {
-      this.toastr.error('No topic is noted!', 'Error', {
+    if (this.user.topics.every(ratedTopic => ratedTopic.liked.score == 'ZERO') ||
+      this.user.topics.every(ratedTopic => ratedTopic.seeked.score == 'ZERO')) {
+      this.toastr.error('Please mark out topics!', 'Error', {
         positionClass: 'toast-top-center',
       });
       return;
@@ -66,6 +66,7 @@ export class SignupComponent {
         });
       });
   }
+
 
   public clearForm(): void {
     window.location.reload();

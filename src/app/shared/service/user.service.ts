@@ -14,22 +14,33 @@ export class UserService {
   registerUser(user: User): Observable<User> {
     const requestBody = {
       pseudo: user.userName,
-      connaissances: {} // objet connaissances vide
+      likedTopics: {}, // objet likedTopics vide
+      seekedTopics: {} // objet seekedTopics vide
     };
     // je parcours les topics notés par le user, et pour chaque topic noté
     // on va construire un item connaissances (music -> topic, niveau)
     user.topics
-      .filter(ratedTopic => ratedTopic.rate.score != 'ZERO')
+      .filter(ratedTopic => ratedTopic.liked.score != 'ZERO')
       .forEach(ratedTopic => {
-        //initialisation de la propriété ratedTopic de l'objet Connaissances
-        requestBody.connaissances[ratedTopic.topic.name] = {
+        //initialisation de la propriété ratedTopic de l'objet likedTopics
+        requestBody.likedTopics[ratedTopic.topic.name] = {
           'topic': ratedTopic.topic,
-          'niveau': ratedTopic.rate.score
+          'niveau': ratedTopic.liked.score
         };
       });
 
+    user.topics
+      .filter(ratedTopic => ratedTopic.seeked.score != 'ZERO')
+      .forEach(ratedTopic => {
+        //initialisation de la propriété ratedTopic de l'objet seekedTopics
+        requestBody.seekedTopics[ratedTopic.topic.name] = {
+          'topic': ratedTopic.topic,
+          'niveau': ratedTopic.seeked.score
+        };
+      });
+    console.log(requestBody)
 
-    return this.http.post<User>(this.rootUrl + '/connaissances', requestBody);
+    return this.http.post<User>(this.rootUrl + '/knowledges', requestBody);
   }
 
   getMachedUsers(userName: String, methodName:String[]) : Observable<any>{
