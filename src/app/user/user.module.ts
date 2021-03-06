@@ -12,7 +12,8 @@ import {AgGridModule} from 'ag-grid-angular';
     CommonModule,
     GridModule,
     GridModule,
-    AgGridModule
+    AgGridModule,
+    GridModule
   ]
 })
 export class UserModule { }

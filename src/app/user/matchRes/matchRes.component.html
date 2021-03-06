@@ -23,9 +23,10 @@
     <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
 
-
   </mat-table>
   <mat-paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
+
+
 </div>
 
 

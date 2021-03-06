@@ -11,6 +11,8 @@ import {MatSort} from '@angular/material/sort';
 export class MatchResComponent implements AfterViewInit {
   @Input() dataSource;
   displayedColums = ['pseudo', 'quality'];
+  private MatSort: MatSort ;
+  private MatPaginator: MatPaginator;
 
   constructor() {
   }
@@ -20,8 +22,8 @@ export class MatchResComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
-    // this.dataSource.value.sort(this.MatSort);
-    // this.dataSource.value.sort(this.MatPaginator);
+    this.dataSource.value.sort(this.MatSort);
+    this.dataSource.value.sort(this.MatPaginator);
   }
 }
 

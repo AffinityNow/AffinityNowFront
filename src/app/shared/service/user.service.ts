@@ -3,11 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user.model';
 import {Observable} from 'rxjs';
 import {Topic} from '../model/topic.model';
+import {url} from 'inspector';
 
 
 @Injectable()
 export class UserService {
-  readonly rootUrl = 'http://localhost:8080/utilisateur';
+  readonly rootUrl = 'http://localhost:8080/user';
    constructor(private http: HttpClient) {
   }
 
@@ -43,9 +44,11 @@ export class UserService {
     return this.http.post<User>(this.rootUrl + '/knowledges', requestBody);
   }
 
-  getMachedUsers(userName: String, methodName:String[]) : Observable<any>{
-    return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName);
+  getMachedUsers(userName: String, methodName: String[]): Observable<any>{
+    return this.http.get<any>(this.rootUrl + '/' + userName + '/match/' + methodName);
   }
-
+  getUser(userName: String): Observable<any>{
+     return this.http.get<any>(this.rootUrl + '/username');
+  }
 
 }
