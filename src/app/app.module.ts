@@ -28,7 +28,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {ButtonModule} from 'primeng/button';
 import {ProfilComponent} from './user/profil/profil.component';
-
+import { AgGridModule } from 'ag-grid-angular';
 
 const appRoutes: Routes = [
   {
@@ -83,7 +83,8 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSelectModule,
     MatSortModule,
-    ButtonModule
+    ButtonModule,
+    AgGridModule.withComponents([])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
