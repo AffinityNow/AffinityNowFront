@@ -9,6 +9,7 @@ import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
 import {RatedTopic} from '../../shared/model/ratedtopic.model';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class SignupComponent {
   constructor(private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
               private userService: UserService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private router: Router) {
 
   }
 
@@ -60,6 +62,10 @@ export class SignupComponent {
     this.userService.registerUser(this.user)
       .subscribe(data => {
         this.toastr.success('User registration successful');
+        setTimeout(() => {
+          this.router.navigate(['./matchOption']);
+        }, 2000)
+
       }, error => {
         this.toastr.error('Username already taken', 'Error', {
           positionClass: 'toast-top-center',
