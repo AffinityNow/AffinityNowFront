@@ -8,7 +8,9 @@ Written in JAVA 14 (back) and Angular 11 (Front).
 
 ### Screenshots
 
-![Homepage](src/assets/pic/homepage.png)
+![Homepage](src/assets/pic/homepage.png) 
+
+![Login](src/assets/pic/login.png)
 
 ### Features
    * Create user profile (Username)
