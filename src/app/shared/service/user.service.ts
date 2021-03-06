@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user.model';
 import {Observable} from 'rxjs';
 import {Topic} from '../model/topic.model';
-import {url} from 'inspector';
 
 
 @Injectable()
@@ -50,5 +49,7 @@ export class UserService {
   getUser(userName: String): Observable<any>{
      return this.http.get<any>(this.rootUrl + '/username');
   }
-
+  getFriend(userName: String): Observable<any>{
+     return this.http.get<any>(this.rootUrl + '/' + userName + '/friend');
+  }
 }

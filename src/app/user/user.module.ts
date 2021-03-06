@@ -4,6 +4,8 @@ import { ProfilComponent } from './profil/profil.component';
 import {GridModule} from '@progress/kendo-angular-grid';
 import {GridModule} from '@syncfusion/ej2-ng-grids';
 import {AgGridModule} from 'ag-grid-angular';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {AgGridModule} from 'ag-grid-angular';
     GridModule,
     GridModule,
     AgGridModule,
-    GridModule
+    GridModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class UserModule { }

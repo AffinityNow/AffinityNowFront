@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { DataManager, ODataV4Adaptor} from '@syncfusion/ej2-data';
 
 @Component({
@@ -7,9 +7,9 @@ import { DataManager, ODataV4Adaptor} from '@syncfusion/ej2-data';
   styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
-
+  @Input() dataSource;
+  displayedColums = ['pseudo'];
   constructor() { }
   ngOnInit(): void {
   }
-
 }
