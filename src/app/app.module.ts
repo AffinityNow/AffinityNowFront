@@ -27,6 +27,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {ButtonModule} from 'primeng/button';
+import {ProfilComponent} from './user/profil/profil.component';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,10 @@ const appRoutes: Routes = [
   {
     path: 'matchOption',
     component: MatchOptionComponent
+  },
+  {
+    path: 'profil',
+    component: ProfilComponent
   },
 ];
 @NgModule({
