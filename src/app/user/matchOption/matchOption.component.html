@@ -1,37 +1,40 @@
 <div class="container">
-  <h1 style="font-size: 30px; text-align: center">Login Form </h1>
-  <form (ngSubmit)="login()" name="form">
-    <label>Username: </label>
+  <h1>Search Form </h1>
+  <p>Please pic your match method and enter your username</p>
+  <form class="username" (ngSubmit)="login()" name="form">
+    <div class=".container-lg" style="width: 40%; margin-left: 30%">
+      <div class="carousel">
+        <p-carousel [value]="methods" [numVisible]="1" [numScroll]="1" [circular]="false">
+          <ng-template let-method pTemplate="item">
+            <div><img [src]="method.icon"
+                      (click)="getResMethodMatch(method.libelle)"
+                      [ngClass]="{'green': toggle, 'white': !toggle}"
+                      alt="method icon" width="200" height="300"/>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
 
-    <label>
-      <input type="text" name="username" #uname="ngModel"
-             [placeholder]="pseudo"
-             [(ngModel)]="user.userName" required />
-    </label>
+      <label style="margin-right: 3%">Username: </label>
+      <label>
+        <input type="text" name="username" #uname="ngModel"
+               [placeholder]="pseudo"
+               [ngStyle]="{'font-size': '18px', 'border-radius': '20%', 'border': 'green'}"
+               [(ngModel)]="user.userName" required/>
+      </label>
+      <ng-container *ngIf="uname.touched && uname.invalid">
+        <p [ngStyle]="{'color': check, 'font-size': '14px'}">Username is missing</p>
+      </ng-container>
 
-    <br/><br/>
-    <ng-container *ngIf="uname.touched && uname.invalid">
-      <p [ngStyle]="{'color': check}">Username is missing</p>
-    </ng-container>
+      <br><br>
 
-    <br>
-    <p>
-      Choose your Match Method
-    </p>
+      <div>
+        <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Go"
+                style="width:40%;" [disabled]="!form.valid"></button>
+        <button pButton type="button" class="p-button-raised p-button-secondary" icon="fa-times" label="Reset"
+                style="width:40%;" (click)="refresh()"></button>
+      </div>
 
-    <br>
-    <ng-select [multiple]="false"
-               [(ngModel)]="selectedMethods"
-               [items]="matchMethods"
-               [ngModelOptions]="{standalone: true}"
-               bindLabel="name"
-               bindValue="id">
-
-    </ng-select>
-
-    <div style="margin-left:36%; margin-top: 5%">
-      <button [disabled]="!form.valid" class="k-button k-primary" type="submit" style="width:20%;">Go</button>
-      <div (click)="refresh()" class="k-button" style="width:20%;">Reset</div>
     </div>
   </form>
   <div *ngIf="resMatch">
