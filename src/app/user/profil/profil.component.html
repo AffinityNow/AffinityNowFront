@@ -1,16 +1,19 @@
 <p xmlns="http://www.w3.org/1999/html"></p>
-<h1>Your matching Results</h1>
+<h1>Liste des gens dans la base </h1>
 <div class="mat-elevation-z8">
-  <mat-table [dataSource]="dataSource" matSort>
+
+  <mat-table [dataSource]="dataSource">
+
     <ng-container matColumnDef="pseudo">
+
       <mat-header-cell *matHeaderCellDef> pseudo</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.username}}</mat-cell>
+      <mat-cell *matCellDef="let user">{{user.pseudo}}</mat-cell>
+      <button mat-raised-button color="warn">Warn</button>
     </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
 
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
-
-
-</div>
+  <mat-paginator #paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
+   </div>
