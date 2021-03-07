@@ -1,0 +1,16 @@
+<p xmlns="http://www.w3.org/1999/html"></p>
+<h1>Your matching Results</h1>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="pseudo">
+      <mat-header-cell *matHeaderCellDef> pseudo</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.username}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
+
+
+</div>
