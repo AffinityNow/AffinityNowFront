@@ -26,6 +26,7 @@ import {MatchOptionComponent} from './user/matchOption/matchOption.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
+import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
 import { ProfilComponent } from './user/profil/profil.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -88,6 +89,7 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSelectModule,
     MatSortModule,
+    CarouselModule,
     ButtonModule,
     MatAutocompleteModule,
     MatDatepickerModule,

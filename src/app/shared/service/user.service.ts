@@ -8,35 +8,34 @@ import {Topic} from '../model/topic.model';
 @Injectable()
 export class UserService {
   readonly rootUrl = 'http://localhost:8080/user';
-  urluser = ' http://localhost:8080/user';
    constructor(private http: HttpClient) {
   }
 
   registerUser(user: User): Observable<User> {
     const requestBody = {
       pseudo: user.userName,
-      likedTopics: {}, // objet likedTopics vide
-      seekedTopics: {} // objet seekedTopics vide
+      likedKnowledges: {}, // objet likedTopics vide
+      seekedKnowledges: {} // objet seekedTopics vide
     };
     // je parcours les topics notés par le user, et pour chaque topic noté
     // on va construire un item connaissances (music -> topic, niveau)
     user.topics
-      .filter(ratedTopic => ratedTopic.liked.score != 'ZERO')
+      .filter(ratedTopic => ratedTopic.likedKnowledges.score != 'ZERO')
       .forEach(ratedTopic => {
         //initialisation de la propriété ratedTopic de l'objet likedTopics
-        requestBody.likedTopics[ratedTopic.topic.name] = {
+        requestBody.likedKnowledges[ratedTopic.topic.name] = {
           'topic': ratedTopic.topic,
-          'niveau': ratedTopic.liked.score
+          'level': ratedTopic.likedKnowledges.score
         };
       });
 
     user.topics
-      .filter(ratedTopic => ratedTopic.seeked.score != 'ZERO')
+      .filter(ratedTopic => ratedTopic.seekedKnowledges.score != 'ZERO')
       .forEach(ratedTopic => {
         //initialisation de la propriété ratedTopic de l'objet seekedTopics
-        requestBody.seekedTopics[ratedTopic.topic.name] = {
+        requestBody.seekedKnowledges[ratedTopic.topic.name] = {
           'topic': ratedTopic.topic,
-          'niveau': ratedTopic.seeked.score
+          'level': ratedTopic.seekedKnowledges.score
         };
       });
     console.log(requestBody)

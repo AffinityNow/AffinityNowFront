@@ -9,6 +9,7 @@ import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
 import {RatedTopic} from '../../shared/model/ratedtopic.model';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -20,18 +21,19 @@ export class SignupComponent {
 
   user: User = new User();
   ratings: RateItem [] = [
-    {name: '★★★★★', score: 'CINQ',},
-    {name: '★★★★', score: 'QUATRE'},
-    {name: '★★★', score: 'TROIS'},
-    {name: '★★', score: 'DEUX'},
-    {name: '★', score: 'UN'},
+    {name: '★★★★★', score: 'FIVE',},
+    {name: '★★★★', score: 'FOUR'},
+    {name: '★★★', score: 'THREE'},
+    {name: '★★', score: 'TWO'},
+    {name: '★', score: 'ONE'},
     {name: '', score: 'ZERO'}
   ];
 
   constructor(private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
               private userService: UserService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private router: Router) {
 
   }
 
@@ -50,8 +52,8 @@ export class SignupComponent {
 
 
   public sign_up(): void {
-    if (this.user.topics.every(ratedTopic => ratedTopic.liked.score == 'ZERO') ||
-      this.user.topics.every(ratedTopic => ratedTopic.seeked.score == 'ZERO')) {
+    if (this.user.topics.every(ratedTopic => ratedTopic.likedKnowledges.score == 'ZERO') ||
+      this.user.topics.every(ratedTopic => ratedTopic.seekedKnowledges.score == 'ZERO')) {
       this.toastr.error('Please mark out topics!', 'Error', {
         positionClass: 'toast-top-center',
       });
@@ -60,8 +62,12 @@ export class SignupComponent {
     this.userService.registerUser(this.user)
       .subscribe(data => {
         this.toastr.success('User registration successful');
+        setTimeout(() => {
+          this.router.navigate(['./matchOption']);
+        }, 2000)
+
       }, error => {
-        this.toastr.error('Something went wrong', 'Error', {
+        this.toastr.error('Username already taken', 'Error', {
           positionClass: 'toast-top-center',
         });
       });
