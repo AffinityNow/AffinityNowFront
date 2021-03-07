@@ -16,7 +16,8 @@
 
     <ng-container matColumnDef="friend">
       <mat-header-cell *matHeaderCellDef> friend </mat-header-cell>
-      <mat-cell *matCellDef="let user"> <button mat-raised-button color="primary">ADD</button> </mat-cell>
+      <mat-cell *matCellDef="let user"> <button mat-raised-button color="primary" (click)="updateFriend()">ADD</button> </mat-cell>
+
     </ng-container>
 
 
@@ -30,4 +31,16 @@
    </div>
 
 
+<mat-table [dataSource]="dataSource">
 
+  <ng-container matColumnDef="name">
+
+    <mat-header-cell *matHeaderCellDef> name</mat-header-cell>
+    <mat-cell *matCellDef="let topic">{{topic.name}}</mat-cell>
+
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColums1"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColums1"></mat-row>
+
+</mat-table>

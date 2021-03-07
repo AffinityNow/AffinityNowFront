@@ -20,8 +20,10 @@ import {HttpClient} from '@angular/common/http';
 export class ProfilComponent implements OnInit {
   title = 'AffinityNowFront';
   dataSource = new UserDataSource(this.userService);
+  // dataSource1 = new UserDataSource(this.topicService);
  // dataSource = new MatTableDataSource(this.userService);
   displayedColums = ['pseudo', 'friend'];
+  displayedColums1 = ['name'];
   filteredOptions: Observable<User[]>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -31,8 +33,11 @@ export class ProfilComponent implements OnInit {
   }*/
   ngOnInit(): void {}
   readonly rootUrl = 'http://localhost:8080/user';
-  getFriend(): Observable<any>{
-    return this.http.get<any>(this.rootUrl + '/jean/friend');
+
+
+  updateFriend(){
+    // @ts-ignore
+    return this.http.put(this.rootUrl+"/jean/friend");
   }
 }
 

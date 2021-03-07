@@ -50,7 +50,5 @@ export class UserService {
   getUser(): Observable<any>{
      return this.http.get<any>(this.urluser);
   }
-  getFriend(userName: String): Observable<any>{
-     return this.http.get<any>(this.rootUrl + '/' + userName + '/friend');
-  }
+
 }
