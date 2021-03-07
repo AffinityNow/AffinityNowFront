@@ -7,8 +7,7 @@ import { DataManager, ODataV4Adaptor} from '@syncfusion/ej2-data';
   styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
-  @Input() dataSource;
-  displayedColums = ['pseudo'];
+
   constructor() { }
   ngOnInit(): void {
   }
