@@ -7,6 +7,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import{MatTableDataSource} from '@angular/material/table';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -14,16 +16,24 @@ import {map, startWith} from 'rxjs/operators';
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
+
 export class ProfilComponent implements OnInit {
   title = 'AffinityNowFront';
   dataSource = new UserDataSource(this.userService);
-  displayedColums = ['pseudo'];
+ // dataSource = new MatTableDataSource(this.userService);
+  displayedColums = ['pseudo', 'friend'];
   filteredOptions: Observable<User[]>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private userService: UserService ) { }
-
+  constructor(private userService: UserService ,private http: HttpClient) { }
+ /* applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }*/
   ngOnInit(): void {}
+  readonly rootUrl = 'http://localhost:8080/user';
+  getFriend(): Observable<any>{
+    return this.http.get<any>(this.rootUrl + '/jean/friend');
+  }
 }
 
 

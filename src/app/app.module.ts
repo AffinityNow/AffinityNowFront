@@ -30,6 +30,9 @@ import {ButtonModule} from 'primeng/button';
 import { ProfilComponent } from './user/profil/profil.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 const appRoutes: Routes = [
   {
@@ -88,6 +91,9 @@ const appRoutes: Routes = [
     ButtonModule,
     MatAutocompleteModule,
     MatDatepickerModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatButtonModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
