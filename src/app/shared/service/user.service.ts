@@ -8,6 +8,7 @@ import {Topic} from '../model/topic.model';
 @Injectable()
 export class UserService {
   readonly rootUrl = 'http://localhost:8080/user';
+  urluser = ' http://localhost:8080/user';
    constructor(private http: HttpClient) {
   }
 
@@ -46,8 +47,8 @@ export class UserService {
   getMachedUsers(userName: String, methodName: String[]): Observable<any>{
     return this.http.get<any>(this.rootUrl + '/' + userName + '/match/' + methodName);
   }
-  getUser(userName: String): Observable<any>{
-     return this.http.get<any>(this.rootUrl + '/username');
+  getUser(): Observable<any>{
+     return this.http.get<any>(this.urluser);
   }
   getFriend(userName: String): Observable<any>{
      return this.http.get<any>(this.rootUrl + '/' + userName + '/friend');

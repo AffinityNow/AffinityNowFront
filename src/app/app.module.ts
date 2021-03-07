@@ -27,8 +27,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {ButtonModule} from 'primeng/button';
-import {ProfilComponent} from './user/profil/profil.component';
-import { AgGridModule } from 'ag-grid-angular';
+import { ProfilComponent } from './user/profil/profil.component';
 
 const appRoutes: Routes = [
   {
@@ -47,7 +46,7 @@ const appRoutes: Routes = [
     path: 'profil',
     component: ProfilComponent
   },
-];
+  ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +55,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     SignupComponent,
     MatchOptionComponent,
-    MatchResComponent
+    MatchResComponent,
+    ProfilComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -84,7 +84,6 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSortModule,
     ButtonModule,
-    AgGridModule.withComponents([])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
