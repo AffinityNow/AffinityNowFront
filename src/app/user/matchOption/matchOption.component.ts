@@ -22,19 +22,13 @@ export class MatchOptionComponent implements OnInit {
   pseudo:String = "          Your pseudo";
   toggle = false;
   topics: Topic[];
-  selectedTopics: Topic[] = [];
+  selectedTopics=[];
   selectedValue: string = 'include';
-
-  // stateOptions: any[];
 
   constructor(private userService: UserService,
               private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
               private toastr: ToastrService) {
-    // this.stateOptions = [
-    //   { label: "Include", value: "include" },
-    //   { label: "Exclude", value: "exclude" }
-    // ];
   }
 
   ngOnInit(): void {
@@ -63,7 +57,7 @@ export class MatchOptionComponent implements OnInit {
       });
       return;
     }
-    this.userService.getMachedUsers(this.user.userName, res )
+    this.userService.getMatchedUsers(this.user.userName, res )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
         this.matchRes = data;

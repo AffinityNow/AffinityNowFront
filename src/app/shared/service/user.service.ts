@@ -43,9 +43,13 @@ export class UserService {
     return this.http.post<User>(this.rootUrl + '/knowledges', requestBody);
   }
 
-  getMachedUsers(userName: String, methodName:String[]) : Observable<any>{
+  getMatchedUsers(userName: String, methodName:String[]) : Observable<any>{
     return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName);
   }
 
+  // getMatcheExcludedTopics(userName: String, methodName:String[]) : Observable<any>{
+  //   const requestBody : string[] = [];
+  //   return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName, requestBody);
+  // }
 
 }
