@@ -28,7 +28,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
-import { ProfilComponent } from './user/profil/profil.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
@@ -37,6 +36,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {ProfilComponent} from './user/profil/profil.component';
 
 const appRoutes: Routes = [
   {
