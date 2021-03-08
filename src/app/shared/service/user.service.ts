@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user.model';
 import {Observable} from 'rxjs';
-import {Topic} from '../model/topic.model';
 
 
 @Injectable()
@@ -43,13 +42,8 @@ export class UserService {
     return this.http.post<User>(this.rootUrl + '/knowledges', requestBody);
   }
 
-  getMatchedUsers(userName: String, methodName:String[]) : Observable<any>{
-    return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName);
+  getMatchedUsers(userName: String, methodName:String[], selectedTopics:String[]) : Observable<any>{
+    return this.http.post<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName, selectedTopics);
   }
-
-  // getMatcheExcludedTopics(userName: String, methodName:String[]) : Observable<any>{
-  //   const requestBody : string[] = [];
-  //   return this.http.get<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName, requestBody);
-  // }
 
 }

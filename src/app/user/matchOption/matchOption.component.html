@@ -40,15 +40,14 @@
     <p-radioButton name="groupname" value="include"  label="Include" [(ngModel)]="selectedValue" style="padding-right: 2%"></p-radioButton>
     <p-radioButton name="groupname" value="exclude"  label="Exclude" [(ngModel)]="selectedValue"></p-radioButton>
     </div>
-    <p-multiSelect [options]="topics"
-                   [(ngModel)]="selectedTopics"
+    <p-multiSelect [options]="topics" name="stopicsName"
+                    [(ngModel)]="selectedTopics"
                    defaultLabel="Select Topics"
                    optionLabel="name"
                    display="chip">
     </p-multiSelect>
     </div>
     <br><br>
-
     <!--submit/reset buttons-->
     <div style="text-align: center">
       <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Go"

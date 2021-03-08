@@ -22,7 +22,7 @@ export class MatchOptionComponent implements OnInit {
   pseudo:String = "          Your pseudo";
   toggle = false;
   topics: Topic[];
-  selectedTopics=[];
+  selectedTopics: Topic[];
   selectedValue: string = 'include';
 
   constructor(private userService: UserService,
@@ -33,15 +33,18 @@ export class MatchOptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+   // this.selectedTopics=[];
+
     this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
-    this.topicService.getTopics().then((topic) => {
-      this.topics=topic;
+    this.topicService.getTopics().then((topics) => {
+      this.topics=topics;
       }
     );
   }
 
   public form: FormGroup = new FormGroup({
-    username: new FormControl(),
+   // username: new FormControl(),
+   //  selectedTopics: new FormControl()
   });
 
   getResMethodMatch(libelle: string) : void{
@@ -57,10 +60,11 @@ export class MatchOptionComponent implements OnInit {
       });
       return;
     }
-    this.userService.getMatchedUsers(this.user.userName, res )
+    this.userService.getMatchedUsers(this.user.userName, res, this.selectedTopics.map(topic => topic.name) )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
         this.matchRes = data;
+
         console.log('match result',this.matchRes);
       }, error => {
         this.toastr.error(' unknown User', 'Error', {
