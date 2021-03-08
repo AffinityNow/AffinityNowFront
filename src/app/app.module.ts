@@ -28,10 +28,15 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
+import { ProfilComponent } from './user/profil/profil.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatButtonModule} from '@angular/material/button';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
-
 
 const appRoutes: Routes = [
   {
@@ -46,7 +51,11 @@ const appRoutes: Routes = [
     path: 'matchOption',
     component: MatchOptionComponent
   },
-];
+  {
+    path: 'profil',
+    component: ProfilComponent
+  },
+  ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +64,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     SignupComponent,
     MatchOptionComponent,
-    MatchResComponent
+    MatchResComponent,
+    ProfilComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -83,6 +93,12 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSortModule,
     CarouselModule,
+    ButtonModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatButtonModule,
     MultiSelectModule,
     SelectButtonModule,
     ButtonModule,

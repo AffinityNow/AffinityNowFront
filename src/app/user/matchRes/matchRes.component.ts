@@ -12,6 +12,7 @@ export class MatchResComponent implements AfterViewInit {
   @Input() dataSource;
   displayedColums = ['pseudo', 'quality'];
 
+
   constructor() {
   }
 
