@@ -1,0 +1,33 @@
+<p xmlns="http://www.w3.org/1999/html"></p>
+<h1>Your matching Results</h1>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="pseudo">
+      <mat-header-cell *matHeaderCellDef> Pseudo</mat-header-cell>
+      <mat-cell *matCellDef="let mUser">{{mUser.mUser.pseudo}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quality">
+      <mat-header-cell *matHeaderCellDef> quality </mat-header-cell>
+      <mat-cell *matCellDef="let mUser">{{mUser.quality}}</mat-cell>
+    </ng-container>
+    <!--topic  -->
+    <ng-container matColumnDef="commonTopics">
+      <mat-header-cell *matHeaderCellDef> commonTopics </mat-header-cell>
+      <!--mat-cell *matCellDef="let mUser">{{mUser}}</mat-cell>-->
+
+      <!--let commonTopics">{{commonTopics.topic.name}}-->
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
+
+  </mat-table>
+  <mat-paginator #paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
+
+
+</div>
+
+
+

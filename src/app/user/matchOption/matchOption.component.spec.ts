@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListeMatchComponent } from './listeMatch.component';
+import { MatchOptionComponent } from './matchOption.component';
 
-describe('ListeMatchComponent', () => {
-  let component: ListeMatchComponent;
-  let fixture: ComponentFixture<ListeMatchComponent>;
+describe('MatchOptionComponent', () => {
+  let component: MatchOptionComponent;
+  let fixture: ComponentFixture<MatchOptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListeMatchComponent ]
+      declarations: [ MatchOptionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListeMatchComponent);
+    fixture = TestBed.createComponent(MatchOptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

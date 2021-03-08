@@ -1,32 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {HomeComponent} from './shared/home/home.component';
-import {AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from './shared/footer/footer.component';
-import {HeaderComponent } from './shared/header/header.component';
+import {HeaderComponent} from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {LoginComponent} from './user/login/login.component';
-import {MatchServiceService} from './shared/service/match-service.service';
-
 import {SignupComponent} from './user/signup/signup.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
-
 import {GridModule, RowFilterModule} from '@progress/kendo-angular-grid';
-import {DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { InputsModule } from '@progress/kendo-angular-inputs';
+import {DropDownsModule} from '@progress/kendo-angular-dropdowns';
+import {InputsModule} from '@progress/kendo-angular-inputs';
 import {DropdownModule} from 'primeng/dropdown';
 import {LabelModule} from '@progress/kendo-angular-label';
-import {ListeMatchComponent} from './user/listeMatch/listeMatch.component';
-
-
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+import {MatchOptionComponent} from './user/matchOption/matchOption.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {MatSortModule} from '@angular/material/sort';
+import {MatchResComponent} from './user/matchRes/matchRes.component';
+import {CarouselModule} from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatButtonModule} from '@angular/material/button';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {ProfilComponent} from './user/profil/profil.component';
 
 const appRoutes: Routes = [
   {
@@ -34,18 +44,18 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: 'signup',
     component: SignupComponent
   },
   {
-    path: 'listeMatch',
-    component: ListeMatchComponent
+    path: 'matchOption',
+    component: MatchOptionComponent
   },
-];
+  {
+    path: 'profil',
+    component: ProfilComponent
+  },
+  ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +63,10 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     SignupComponent,
-    ListeMatchComponent
-    ],
+    MatchOptionComponent,
+    MatchResComponent,
+    ProfilComponent
+  ],
   imports: [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
@@ -72,10 +84,28 @@ const appRoutes: Routes = [
     RowFilterModule,
     InputsModule,
     DropdownModule,
-    LabelModule
+    NgSelectModule,
+    ReactiveFormsModule,
+    LabelModule,
+    SlickCarouselModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatSortModule,
+    CarouselModule,
+    ButtonModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    MultiSelectModule,
+    SelectButtonModule,
+    ButtonModule,
+    RadioButtonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpClient, TopicService, UserService, MatchServiceService],
+  providers: [HttpClient, TopicService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

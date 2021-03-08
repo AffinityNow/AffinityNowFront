@@ -1,0 +1,102 @@
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  /* Body position must be relative while using appendTo */
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.container{
+  margin-top: 5%;
+  font-size: 20px;
+  margin-bottom: 10%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  line-height: 40px;
+  font-family:Georgia,serif;
+  color:#4E443C;
+  font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;
+}
+P{
+  font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+  font-size: 20px;
+  margin-top: 5%; color: #666;
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+.container{
+  margin-top: 3%;
+  font-size: 20px;
+  margin-bottom: 10%;
+}
+.username{
+  text-align: center;
+}
+p-carousel{
+  border-radius: 3px;
+  margin: .3rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+h1 {
+  text-align: center;
+  font-size: 35px;
+  line-height: 40px;
+  font-family:Georgia,serif;
+  color:#4E443C;
+  font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;
+}
+P{
+  font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+  font-size: 20px;
+  margin-top: 2%; color: #666;
+  text-align: center;
+}
+
+.white {
+  background-color: white;
+}
+
+.green {
+  background-color: lightgreen;
+}
+
+.username{
+  text-align: center;
+  margin-top: 5%;
+}
+
+p-multiSelect{
+  margin-left: 41%;
+}
+
+:host ::ng-deep .p-multiselect {
+  min-width: 15rem;
+}
+
+:host ::ng-deep .multiselect-custom-virtual-scroll .p-multiselect {
+  min-width: 20rem;
+}
+.radioButton{
+  margin-bottom: 3% ; text-align: center;
+}
