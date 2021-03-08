@@ -3,7 +3,9 @@ import {User} from '../../shared/model/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
-import {MatchMethods} from '../../shared/model/topic.model';
+import {MatchMethods, Topic} from '../../shared/model/topic.model';
+import {PrimeNGConfig} from 'primeng/api';
+import {TopicService} from '../../shared/service/TopicService';
 
 
 @Component({
@@ -13,24 +15,36 @@ import {MatchMethods} from '../../shared/model/topic.model';
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
-  resMatch;
-  methods: any[];
+  matchRes;
+  methods;
   selectedMethods;
   check = 'red';
   pseudo:String = "          Your pseudo";
   toggle = false;
-
+  topics: Topic[];
+  selectedTopics: Topic[];
+  selectedValue: string = 'include';
 
   constructor(private userService: UserService,
+              private topicService: TopicService,
+              private primengConfig: PrimeNGConfig,
               private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
+   // this.selectedTopics=[];
+
     this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
+    this.topicService.getTopics().then((topics) => {
+      this.topics=topics;
+      }
+    );
   }
 
   public form: FormGroup = new FormGroup({
-    username: new FormControl(),
+   // username: new FormControl(),
+   //  selectedTopics: new FormControl()
   });
 
   getResMethodMatch(libelle: string) : void{
@@ -46,11 +60,12 @@ export class MatchOptionComponent implements OnInit {
       });
       return;
     }
-    this.userService.getMachedUsers(this.user.userName, res )
+    this.userService.getMatchedUsers(this.user.userName, res, this.selectedTopics.map(topic => topic.name) )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
-        this.resMatch = data;
-        console.log('match result',this.resMatch);
+        this.matchRes = data;
+
+        console.log('match result',this.matchRes);
       }, error => {
         this.toastr.error(' unknown User', 'Error', {
           positionClass: 'toast-top-center',

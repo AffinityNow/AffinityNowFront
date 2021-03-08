@@ -28,6 +28,9 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 
 const appRoutes: Routes = [
@@ -80,7 +83,10 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSortModule,
     CarouselModule,
-    ButtonModule
+    MultiSelectModule,
+    SelectButtonModule,
+    ButtonModule,
+    RadioButtonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
