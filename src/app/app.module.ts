@@ -26,8 +26,8 @@ import {MatchOptionComponent} from './user/matchOption/matchOption.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
-// import {CarouselModule} from 'primeng/carousel';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import {CarouselModule} from 'primeng/carousel';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
 import {ButtonModule} from 'primeng/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'profil',
-    component: UserprofilComponent
+    component: ProfilComponent
   },
   ];
 @NgModule({

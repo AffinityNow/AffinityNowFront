@@ -19,11 +19,12 @@ import {HttpClient} from '@angular/common/http';
 
 export class ProfilComponent implements OnInit {
   title = 'AffinityNowFront';
+  userName: any;
+  users: User[] = [];
   dataSource = new UserDataSource(this.userService);
   // dataSource1 = new UserDataSource(this.topicService);
  // dataSource = new MatTableDataSource(this.userService);
-  displayedColums = ['pseudo', 'friend'];
-  displayedColums1 = ['name'];
+  displayedColums = ['pseudo', 'ADD', 'DELETE'];
   filteredOptions: Observable<User[]>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -35,9 +36,22 @@ export class ProfilComponent implements OnInit {
   readonly rootUrl = 'http://localhost:8080/user';
 
 
-  updateFriend(){
-    // @ts-ignore
-    return this.http.put(this.rootUrl+"/jean/friend");
+  Search(){
+   if(this.userName == ""){
+     this.ngOnInit();
+   }else{
+     this.users = this.users.filter(res =>{
+       return res.userName.toLocaleLowerCase().match(this.userName.toLocaleLowerCase());
+     });
+   }
+  }
+
+  addFriend() {
+    return 0;
+  }
+
+  deleteFriend() {
+    return 0;
   }
 }
 
