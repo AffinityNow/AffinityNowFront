@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
@@ -26,7 +26,8 @@ import {MatchOptionComponent} from './user/matchOption/matchOption.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
-import {CarouselModule} from 'primeng/carousel';
+// import {CarouselModule} from 'primeng/carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import {ButtonModule} from 'primeng/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -37,7 +38,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
-
+import {UserprofilComponent} from './user/userprofil/userprofil.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'profil',
-    component: ProfilComponent
+    component: UserprofilComponent
   },
   ];
 @NgModule({
@@ -102,7 +103,8 @@ const appRoutes: Routes = [
     MultiSelectModule,
     SelectButtonModule,
     ButtonModule,
-    RadioButtonModule
+    RadioButtonModule,
+    BrowserModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
