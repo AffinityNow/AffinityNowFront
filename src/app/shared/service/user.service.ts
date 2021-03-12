@@ -48,5 +48,12 @@ export class UserService {
   getUser(): Observable<any>{
      return this.http.get<any>(this.rootUrl);
   }
+  addFriend() {
+    return 0;
+  }
+
+  deleteFriend(){
+    return 0;
+  }
 
 }

@@ -66,7 +66,8 @@ const appRoutes: Routes = [
     SignupComponent,
     MatchOptionComponent,
     MatchResComponent,
-    ProfilComponent
+    ProfilComponent,
+    UserprofilComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

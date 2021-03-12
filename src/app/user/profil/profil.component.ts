@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {FormControl} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
+import {catchError, map, startWith} from 'rxjs/operators';
 import{MatTableDataSource} from '@angular/material/table';
 import {HttpClient} from '@angular/common/http';
 
@@ -44,14 +44,6 @@ export class ProfilComponent implements OnInit {
        return res.userName.toLocaleLowerCase().match(this.userName.toLocaleLowerCase());
      });
    }
-  }
-
-  addFriend() {
-    return 0;
-  }
-
-  deleteFriend() {
-    return 0;
   }
 }
 
