@@ -19,7 +19,7 @@ export class MatchOptionComponent implements OnInit {
   methods;
   selectedMethods;
   check = 'red';
-  pseudo:String = "          Your pseudo";
+  pseudo:String = " Your Username";
   toggle = false;
   topics: Topic[];
   selectedTopics: Topic[];
@@ -52,7 +52,7 @@ export class MatchOptionComponent implements OnInit {
     this.toggle = !this.toggle;
   }
 
-  login() {
+  maching() {
     const res = this.selectedMethods;
       if(!res){
       this.toastr.error('Pic a method !', 'Error', {

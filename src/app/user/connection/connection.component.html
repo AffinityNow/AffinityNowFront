@@ -1,0 +1,18 @@
+<div class="login-container">
+  <div class="login-content">
+    <mat-card>
+      <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
+        <mat-form-field>
+          <mat-icon matPrefix>person_outline</mat-icon>
+          <label>
+            <input type="text" matInput
+                   placeholder="Your Account"
+                   [(ngModel)]="user.userName" name="pseudo"
+                   formControlName="pseudo">
+          </label>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">Login</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

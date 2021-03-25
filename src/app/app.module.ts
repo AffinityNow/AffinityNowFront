@@ -37,6 +37,11 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
+import {UserModule} from './user/user.module';
+import {ConnectionComponent} from './user/connection/connection.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 const appRoutes: Routes = [
   {
@@ -46,6 +51,10 @@ const appRoutes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'connect',
+    component: ConnectionComponent
   },
   {
     path: 'matchOption',
@@ -62,6 +71,7 @@ const appRoutes: Routes = [
     HomeComponent,
     FooterComponent,
     HeaderComponent,
+    ConnectionComponent,
     SignupComponent,
     MatchOptionComponent,
     MatchResComponent,
@@ -102,7 +112,11 @@ const appRoutes: Routes = [
     MultiSelectModule,
     SelectButtonModule,
     ButtonModule,
-    RadioButtonModule
+    RadioButtonModule,
+    UserModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatIconModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],

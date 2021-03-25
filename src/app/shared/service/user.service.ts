@@ -45,8 +45,10 @@ export class UserService {
   getMatchedUsers(userName: String, methodName:String[], selectedTopics:String[]) : Observable<any>{
     return this.http.post<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName, selectedTopics);
   }
-  getUser(): Observable<any>{
+/*  getUser(): Observable<any>{
      return this.http.get<any>(this.rootUrl);
+  }*/
+  getUser(userName: String) : Observable<any>{
+    return this.http.get<any>(this.rootUrl+'/'+userName);
   }
-
 }

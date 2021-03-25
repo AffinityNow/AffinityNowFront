@@ -1,22 +1,9 @@
 <div class="container">
   <h1>Maching Form </h1>
-  <p>Please pic your match method and enter your username</p>
+  <p>Please pic your match method and enter your pseudo</p>
   <!--  form-->
-  <form class="matchForm" (ngSubmit)="login()" name="form">
-    <!--username input-->
-    <div class=username>
-      <label style="margin-right: 3%">Username: </label>
-      <label>
-        <input type="text" name="username" #uname="ngModel"
-               [placeholder]="pseudo"
-               [ngStyle]="{'font-size': '18px', 'border-radius': '20%', 'border': 'green'}"
-               [(ngModel)]="user.userName" required/>
-      </label>
-      <ng-container *ngIf="uname.touched && uname.invalid">
-        <p [ngStyle]="{'color': check, 'font-size': '14px'}">Username is missing</p>
-      </ng-container>
-      <br><br>
-    </div>
+  <form class="matchForm" (ngSubmit)="maching()" name="form">
+
     <!--    carousel-->
     <div class=".container-lg" style="width: 40%; margin-left: 30%">
       <div class="carousel">
@@ -31,14 +18,27 @@
           </ng-template>
         </p-carousel>
       </div>
-
+      <!--username input-->
+      <div class=username>
+        <label>Username: </label>
+        <label>
+          <input type="text" name="username" #uname="ngModel"
+                 [placeholder]="pseudo"
+                 [ngStyle]="{'font-size': '18px', 'border-radius': '20%', 'border': 'green'}"
+                 [(ngModel)]="user.userName" required/>
+        </label>
+        <ng-container *ngIf="uname.touched && uname.invalid">
+          <p [ngStyle]="{'color': check, 'font-size': '14px'}">Pseudo is missing</p>
+        </ng-container>
+        <br><br>
+      </div>
     </div>
 
     <!--include exclude topics-->
     <div>
     <div class="radioButton">
-    <p-radioButton name="groupname" value="include"  label="Include" [(ngModel)]="selectedValue" style="padding-right: 2%"></p-radioButton>
-    <p-radioButton name="groupname" value="exclude"  label="Exclude" [(ngModel)]="selectedValue"></p-radioButton>
+      <p-radioButton name="groupname" value="include" class="one" label="Include" [(ngModel)]="selectedValue"></p-radioButton>
+      <p-radioButton name="groupname" value="exclude"  class="two" label="Exclude" [(ngModel)]="selectedValue"></p-radioButton>
     </div>
     <p-multiSelect [options]="topics" name="stopicsName"
                     [(ngModel)]="selectedTopics"
