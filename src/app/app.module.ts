@@ -39,6 +39,7 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
 import {UserprofilComponent} from './user/userprofil/userprofil.component';
+import {MailComponent} from './user/mail/mail.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -55,6 +56,10 @@ const appRoutes: Routes = [
   {
     path: 'profil',
     component: ProfilComponent
+  },
+  {
+    path: 'mail',
+    component: MailComponent
   },
   ];
 @NgModule({

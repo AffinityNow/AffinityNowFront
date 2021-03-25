@@ -6,10 +6,11 @@ import {AgGridModule} from 'ag-grid-angular';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {UserprofilComponent } from './userprofil/userprofil.component';
+import { MailComponent } from './mail/mail.component';
 
 
 @NgModule({
-  declarations: [ ProfilComponent, UserprofilComponent],
+  declarations: [ ProfilComponent, UserprofilComponent, MailComponent],
   imports: [
     CommonModule,
     GridModule,

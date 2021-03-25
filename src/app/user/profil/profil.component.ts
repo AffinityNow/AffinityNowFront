@@ -37,7 +37,7 @@ export class ProfilComponent implements OnInit {
 
 
   Search(){
-   if(this.userName == ""){
+   if (this.userName == ""){
      this.ngOnInit();
    }else{
      this.users = this.users.filter(res =>{
