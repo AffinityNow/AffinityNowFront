@@ -1,52 +1,24 @@
-<!--<p xmlns="http://www.w3.org/1999/html"></p>-->
-<!--<h1>Your matching Results</h1>-->
-<!--<div class="mat-elevation-z8">-->
-<!--  <mat-table [dataSource]="dataSource" matSort>-->
-<!--    <ng-container matColumnDef="pseudo">-->
-<!--      <mat-header-cell *matHeaderCellDef> Pseudo</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let mUser">{{mUser.mUser.pseudo}}</mat-cell>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container matColumnDef="quality">-->
-<!--      <mat-header-cell *matHeaderCellDef> Quality </mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let mUser">{{mUser.quality}}</mat-cell>-->
-<!--    </ng-container>-->
-<!--    &lt;!&ndash;topic  &ndash;&gt;-->
-<!--    <ng-container matColumnDef="commonTopics">-->
-<!--      <mat-header-cell *matHeaderCellDef> CommonTopics </mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let element">{{element.commonTopics}}</mat-cell>-->
-<!--&lt;!&ndash;      <let "commonTopics">{{commonTopics.topic.name}}&ndash;&gt;-->
-<!--    </ng-container>-->
-
-
-<!--    <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>-->
-<!--    <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>-->
-
-
-<!--  </mat-table>-->
-<!--&lt;!&ndash;  <mat-paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>&ndash;&gt;-->
-<!--  <mat-paginator #paginator-->
-<!--                 [pageSize]="10"-->
-<!--                 [pageSizeOptions]="[5, 10, 20]">-->
-<!--  </mat-paginator>-->
-<!--</div>-->
-
-
-<p-treeTable [value]="files" [columns]="cols" [paginator]="true" [rows]="10" [lazy]="true"
-             (onLazyLoad)="loadNodes($event)" [totalRecords]="1000" [loading]="loading" (onNodeExpand)="onNodeExpand($event)">
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th *ngFor="let col of columns">
-        {{col.header}}
-      </th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns; let i = index">
-        <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
-        {{rowData[col.field]}}
-      </td>
-    </tr>
-  </ng-template>
-</p-treeTable>
+<div class="card"  style="margin-top: 5%">
+  <h1 style="text-align: center">Match Result</h1>
+  <p-table [value]="dataSource" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Users</th>
+        <th>Quality</th>
+        <th>Common Topics</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-mUser>
+      <tr>
+        <td>{{mUser.mUser.pseudo}}</td>
+        <td>{{mUser.quality}}</td>
+        <td>
+          <ul>
+            <li *ngFor="let item of mUser.commonTopics">{{item.topic.name}}</li>
+          </ul>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

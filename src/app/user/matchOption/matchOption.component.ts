@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../shared/model/user.model';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
 import {MatchMethods, Topic} from '../../shared/model/topic.model';
@@ -64,7 +64,7 @@ export class MatchOptionComponent implements OnInit {
         this.toastr.success('Maching succeeded');
         this.matchRes = data;
 
-        console.log('match result',this.matchRes);
+        // console.log('match result',this.matchRes);
       }, error => {
         this.toastr.error(' unknown User', 'Error', {
           positionClass: 'toast-top-center',
