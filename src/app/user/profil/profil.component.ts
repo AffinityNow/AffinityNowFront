@@ -48,7 +48,7 @@ export class UserDataSource extends DataSource<any>{
 
   }
   connect(): Observable<User[]> {
-    return this.userService.getUser();
+    return this.userService.getUser("jean");
   }
   disconnect() { }
 
