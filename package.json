@@ -53,6 +53,7 @@
     "jquery": "^3.5.1",
     "ngx-slick-carousel": "^0.5.1",
     "ngx-toastr": "^13.2.0",
+    "nodeservice": "^1.0.0",
     "p-dropdown": "0.0.13",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",

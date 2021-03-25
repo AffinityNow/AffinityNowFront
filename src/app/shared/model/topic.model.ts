@@ -1,4 +1,4 @@
-export interface Topic {
+export class Topic {
   id?:string;
   name?:string;
 }

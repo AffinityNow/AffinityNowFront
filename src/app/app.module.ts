@@ -42,6 +42,8 @@ import {ConnectionComponent} from './user/connection/connection.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {TableModule} from 'primeng/table';
+import {TreeTableModule} from 'primeng/treetable';
 
 const appRoutes: Routes = [
   {
@@ -116,7 +118,9 @@ const appRoutes: Routes = [
     UserModule,
     MatToolbarModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    TableModule,
+    TreeTableModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
