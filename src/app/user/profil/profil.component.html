@@ -1,46 +1,45 @@
-<p xmlns="http://www.w3.org/1999/html"></p>
-<h1>Ajout de Friends </h1>
-<div class="mat-elevation-z8">
+<!--<div class="card">
+  <h5 style="text-align: center; margin: 5%">Welcome to your profil</h5>
+  <p-splitter [style]="{'height': '300px'}" styleClass="p-mb-5">
+    <ng-template pTemplate>
+      <h1>Liked Topics</h1>
+      <div class="p-col p-d-flex p-ai-center p-jc-center">-->
+<div class="card" style="margin-top: 5%">
+  <h1 style="text-align: center">Match Result</h1>
+  <p-table [value]="info" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+           [rowsPerPageOptions]="[5,10,15]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Liked Topics</th>
+        <th>Rating</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>
+          <ul>
+            <li *ngFor="let item of user.likedKnowledges">{{item.topic.name}}</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let element of user.likedKnowledges">{{element.topic.level}}</li>
+          </ul>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
 
-<mat-form-field>
-  <input matInput placeholder="Filter">
-</mat-form-field>
-  <mat-table [dataSource]="dataSource">
+<!--      </div>
+    </ng-template>
+    <ng-template pTemplate>
+      <h1>Liked Topics</h1>
+      <div class="p-col p-d-flex p-ai-center p-jc-center">
 
-    <ng-container matColumnDef="pseudo">
-
-      <mat-header-cell *matHeaderCellDef> pseudo</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.pseudo}}</mat-cell>
-
-    </ng-container>
-
-    <ng-container matColumnDef="friend">
-      <mat-header-cell *matHeaderCellDef> friend </mat-header-cell>
-      <mat-cell *matCellDef="let user"> <button mat-raised-button color="primary" (click)="updateFriend()">ADD</button> </mat-cell>
-
-    </ng-container>
-
-
-
-    <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
-
-  </mat-table>
-
-  <mat-paginator #paginator [pageSizeOptions]="[1, 5, 10]" showFirstLastButtons></mat-paginator>
-   </div>
-
-
-<mat-table [dataSource]="dataSource">
-
-  <ng-container matColumnDef="name">
-
-    <mat-header-cell *matHeaderCellDef> name</mat-header-cell>
-    <mat-cell *matCellDef="let topic">{{topic.name}}</mat-cell>
-
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColums1"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColums1"></mat-row>
-
-</mat-table>
+        Panel 2
+      </div>
+    </ng-template>
+  </p-splitter>
+</div>-->
