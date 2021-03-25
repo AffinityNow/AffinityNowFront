@@ -20,11 +20,11 @@
       </div>
       <!--username input-->
       <div class=username>
-        <label>Username: </label>
+        <label>Pseudo : </label>
         <label>
           <input type="text" name="username" #uname="ngModel"
-                 [placeholder]="pseudo"
-                 [ngStyle]="{'font-size': '18px', 'border-radius': '20%', 'border': 'green'}"
+                 [placeholder]="'..................'"
+                 [ngStyle]="{'font-size': '16px', 'border-radius': '20%', 'border': 'green'}"
                  [(ngModel)]="user.userName" required/>
         </label>
         <ng-container *ngIf="uname.touched && uname.invalid">

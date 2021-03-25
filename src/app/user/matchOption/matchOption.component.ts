@@ -19,7 +19,6 @@ export class MatchOptionComponent implements OnInit {
   methods;
   selectedMethods;
   check = 'red';
-  pseudo:String = " Your Username";
   toggle = false;
   topics: Topic[];
   selectedTopics: Topic[];

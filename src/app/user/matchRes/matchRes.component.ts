@@ -10,7 +10,7 @@ import {MatSort} from '@angular/material/sort';
 //child
 export class MatchResComponent implements AfterViewInit {
   @Input() dataSource;
-  displayedColums = ['pseudo', 'quality', 'shared Topics'];
+  displayedColums = ['pseudo', 'quality'];
 
 
   constructor() {
@@ -19,7 +19,6 @@ export class MatchResComponent implements AfterViewInit {
   title = 'AffinityNowFront';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  commonTopics: any;
 
   ngAfterViewInit() {
     // this.dataSource.value.sort(this.MatSort);
