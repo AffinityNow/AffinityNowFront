@@ -8,10 +8,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {UserprofilComponent } from './userprofil/userprofil.component';
 import { MailComponent } from './mail/mail.component';
 import {FormsModule} from '@angular/forms';
+import { EmailComponent } from './email/email.component';
 
 
 @NgModule({
-  declarations: [ ProfilComponent, UserprofilComponent, MailComponent],
+  declarations: [ ProfilComponent, UserprofilComponent, MailComponent, EmailComponent],
     imports: [
         CommonModule,
         GridModule,
