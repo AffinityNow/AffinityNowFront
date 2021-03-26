@@ -40,7 +40,7 @@ export class SignupComponent {
 
   ngOnInit(): void {
 
-    this.topicService.getTopics().then((topic) => {
+    this.topicService.getTopics().subscribe((topic) => {
         console.log(topic);
         this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5], this.ratings[5]));
       }

@@ -35,7 +35,7 @@ export class MatchOptionComponent implements OnInit {
    // this.selectedTopics=[];
 
     this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
-    this.topicService.getTopics().then((topics) => {
+    this.topicService.getTopics().subscribe((topics) => {
       this.topics=topics;
       }
     );

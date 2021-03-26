@@ -1,6 +1,7 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Topic} from '../model/topic.model';
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
 
 
 @Injectable()
@@ -10,12 +11,21 @@ export class TopicService {
   constructor(private http: HttpClient) {
   }
 
-  getTopics() {
-    return this.http.get<any>(this.rootUrl)
-      .toPromise()
-      .then(res => <Topic[]> res)
-      .then(data => {
-        return data;
-      });
+  // Adding HTTP Error Handling with RxJS catchError() & HttpClient
+  handleError(error: HttpErrorResponse) {
+    let errorMessage;
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `(Erreur Serveur) Echec de la récupération des topics`;
+      //errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
+  }
+  getTopics():Observable<any> {
+    return this.http.get<any>(this.rootUrl).pipe(retry(3), catchError(this.handleError));
   }
 }
