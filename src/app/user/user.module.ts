@@ -7,18 +7,20 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {UserprofilComponent } from './userprofil/userprofil.component';
 import { MailComponent } from './mail/mail.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [ ProfilComponent, UserprofilComponent, MailComponent],
-  imports: [
-    CommonModule,
-    GridModule,
-    GridModule,
-    AgGridModule,
-    GridModule,
-    MatTableModule,
-    MatPaginatorModule
-  ]
+    imports: [
+        CommonModule,
+        GridModule,
+        GridModule,
+        AgGridModule,
+        GridModule,
+        MatTableModule,
+        MatPaginatorModule,
+        FormsModule
+    ]
 })
 export class UserModule { }
