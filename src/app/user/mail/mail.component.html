@@ -1,18 +1,8 @@
-<form (ngSubmit)="onSubmit()" #contact>
-  <div class="form-group">
-    <label for="nom">Nom</label>
-    <!input type="text" class="form-control" id="nom" required [(ngModel)]="mail.nom" name="nom">
-  </div>
-
-  <div class="form-group">
-    <label for="email">Email</label>
-    <!input type="text" class="form-control" id="email" required [(ngModel)]="mail.email" name="email">
-  </div>
-
-  <div class="form-group">
-    <label for="message">message</label>
-    <!input type="text" class="form-control" id="message" required [(ngModel)]="mail.message" name="message">
-  </div>
-
-  <button type="submit" class="btn btn-success">Contacter</button>
+<h1>MAIL</h1>
+<form #mailPost = "ngForm" (ngSubmit)="onSubmit(mailPost.value)">
+  <input type="text" name="from" ngModel placeholder="from"><br><br>
+  <input type="text" name="to" ngModel placeholder="to"><br><br>
+  <input type="text" name="body" ngModel placeholder="body"><br><br>
+  <textarea id="subject" name="subject" ngModel placeholder="Write something.." style="height:200px"></textarea>
+  <button type="submit">Submit Data</button>
 </form>

@@ -7,10 +7,10 @@ import {HomeComponent} from './shared/home/home.component';
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from './shared/footer/footer.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {SignupComponent} from './user/signup/signup.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
@@ -77,7 +77,9 @@ const appRoutes: Routes = [
     MatchOptionComponent,
     MatchResComponent,
     ProfilComponent,
-    UserprofilComponent
+    UserprofilComponent,
+    EmailComponent,
+    MailComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -86,18 +88,18 @@ const appRoutes: Routes = [
     ToastrModule.forRoot(), // ToastrModule added
     BrowserModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     OrderListModule,
     BrowserAnimationsModule,
     OrderListModule,
     HttpClientModule,
-    FormsModule,
     GridModule,
     DropDownsModule,
     RowFilterModule,
     InputsModule,
     DropdownModule,
     NgSelectModule,
-    ReactiveFormsModule,
     LabelModule,
     SlickCarouselModule,
     MatTableModule,

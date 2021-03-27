@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Email} from '../../shared/model/email.model';
 import { EmailService} from '../../shared/service/email.service';
 import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {ej} from '@syncfusion/ej2-data/dist/global';
+
 
 @Component({
   selector: 'app-mail',
@@ -11,21 +14,15 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./mail.component.css']
 })
 export class MailComponent implements OnInit {
-
-  constructor(private http: HttpClient, private emailService: EmailService) { }
-
-  mail: Email = new Email();
-
-  ngOnInit() {
+  constructor(private http: HttpClient) {}
+  ngOnInit(): void {
   }
 
-   envoyerEmail() {
-    this.emailService.envoyerEmail(this.mail)
-      .subscribe(data => console.log(data));
-  }
-
-   onSubmit() {
-    this.envoyerEmail();
+  onSubmit(data){
+    this.http.post('http://localhost:8080/mail', data).subscribe((result) => {
+      console.warn('result', result);
+  });
+    console.warn(data);
   }
 
 }
