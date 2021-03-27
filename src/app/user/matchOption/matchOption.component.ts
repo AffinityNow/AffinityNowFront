@@ -59,7 +59,7 @@ export class MatchOptionComponent implements OnInit {
       });
       return;
     }
-    this.userService.getMatchedUsers(this.user.userName, res, this.selectedTopics.map(topic => topic.name) )
+    this.userService.getMatchedUsers(this.user.pseudo, res, this.selectedTopics.map(topic => topic.name) )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
         this.matchRes = data;

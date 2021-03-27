@@ -24,7 +24,7 @@ export class ConnectionComponent implements OnInit {
   }
 
   login() {
-      this.userService.getUser(this.user.userName)
+      this.userService.getUser(this.user.pseudo)
         .subscribe(data => {
           this.toastr.success('Connection succeeded');
           this.userName = data;

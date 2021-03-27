@@ -1,45 +1,118 @@
-<!--<div class="card">
-  <h5 style="text-align: center; margin: 5%">Welcome to your profil</h5>
+<div class="card">
+  <h5 style="text-align: center; margin: 2%">View your interests</h5>
   <p-splitter [style]="{'height': '300px'}" styleClass="p-mb-5">
     <ng-template pTemplate>
-      <h1>Liked Topics</h1>
-      <div class="p-col p-d-flex p-ai-center p-jc-center">-->
-<div class="card" style="margin-top: 5%">
-  <h1 style="text-align: center">Match Result</h1>
-  <p-table [value]="info" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-           [rowsPerPageOptions]="[5,10,15]">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Liked Topics</th>
-        <th>Rating</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-user>
-      <tr>
-        <td>
-          <ul>
-            <li *ngFor="let item of user.likedKnowledges">{{item.topic.name}}</li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <li *ngFor="let element of user.likedKnowledges">{{element.topic.level}}</li>
-          </ul>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+      <div class="p-col p-d-flex p-jc-center">
+        <div class="card" style="margin-top: 3%">
+          <p-table [value]="info" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                   [rowsPerPageOptions]="[5,10,15]">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Liked Topics</th>
+                <th>Rating</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+              <tr>
+                <td>
+                  <ul>
+                    <li *ngFor="let item of user.likedKnowledges.topic">{{item.name}}</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li *ngFor="let element of user.likedKnowledges.topic">{{element.level}}</li>
+                  </ul>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
 
-<!--      </div>
-    </ng-template>
-    <ng-template pTemplate>
-      <h1>Liked Topics</h1>
-      <div class="p-col p-d-flex p-ai-center p-jc-center">
-
-        Panel 2
       </div>
     </ng-template>
+    <ng-template pTemplate>
+      <div class="p-col p-d-flex p-jc-center">
+        <div class="card" style="margin-top: 3%">
+          <p-table [value]="info" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                   [rowsPerPageOptions]="[5,10,15]">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Seeked Topics</th>
+                <th>Rating</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+              <tr>
+                <td>
+                  <ul>
+                    <li *ngFor="let item of user.seekedKnowledges.topic">{{item.name}}</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li *ngFor="let element of user.seekedKnowledges.topic">{{element.level}}</li>
+                  </ul>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </ng-template>
+
   </p-splitter>
-</div>-->
+  <div class="card">
+    <h5 style="text-align: center; margin: 2%">Managing Friends</h5>
+    <p-splitter [style]="{'height': '200px'}" styleClass="p-mb-5">
+      <ng-template pTemplate>
+        <div class="p-col p-d-flex p-jc-center">
+          <form class="form" (ngSubmit)="addFriend()" name="form">
+            <p-dropdown [options]="users" [(ngModel)]="selectedUser" name="pseudo" optionLabel="pseudo" [filter]="true" filterBy="pseudo"
+                        [showClear]="true" placeholder="add a new friend">
+              <ng-template pTemplate="selectedItem">
+                <div  *ngIf="selectedUser">
+                  <div>{{selectedUser.pseudo}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-user pTemplate="pseudo">
+                <div>
+                  <div>{{user.pseudo}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div style="text-align: center; padding-top: 4%">
+              <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Add">
+              </button>
+            </div>
+          </form>
+         </div>
+      </ng-template>
+      <ng-template pTemplate>
+        <div class="p-col p-d-flex p-jc-center">
+          <form class="form" (ngSubmit)="removeFriend()" name="form">
+            <p-dropdown [options]="friends" [(ngModel)]="selectedFriend" name="pseudo" optionLabel="pseudo" [filter]="true" filterBy="pseudo"
+                        [showClear]="true" placeholder="delete a friend">
+              <ng-template pTemplate="selectedItem">
+                <div  *ngIf="selectedFriend">
+                  <div>{{selectedFriend.pseudo}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-friend pTemplate="pseudo">
+                <div>
+                  <div>{{friend.pseudo}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div style="text-align: center; padding-top: 4%">
+              <button pButton type="submit" class="p-button-raised p-button-danger" icon="fa-floppy-o" label="Remove">
+              </button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+    </p-splitter>
+  </div>
+</div>

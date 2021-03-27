@@ -25,7 +25,7 @@
           <input type="text" name="username" #uname="ngModel"
                  [placeholder]="'..................'"
                  [ngStyle]="{'font-size': '16px', 'border-radius': '20%', 'border': 'green'}"
-                 [(ngModel)]="user.userName" required/>
+                 [(ngModel)]="user.pseudo" required/>
         </label>
         <ng-container *ngIf="uname.touched && uname.invalid">
           <p [ngStyle]="{'color': check, 'font-size': '14px'}">Pseudo is missing</p>

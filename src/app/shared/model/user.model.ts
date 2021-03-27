@@ -1,6 +1,6 @@
 import {RatedTopic} from './ratedtopic.model';
 
 export class User {
-  userName: string;
+  pseudo?: string;
   topics: RatedTopic[];
 }

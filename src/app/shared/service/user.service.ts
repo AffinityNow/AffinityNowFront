@@ -12,7 +12,7 @@ export class UserService {
 
   registerUser(user: User): Observable<User> {
     const requestBody = {
-      pseudo: user.userName,
+      pseudo: user.pseudo,
       likedKnowledges: {}, // objet likedTopics vide
       seekedKnowledges: {} // objet seekedTopics vide
     };
@@ -46,10 +46,21 @@ export class UserService {
     return this.http.post<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName, selectedTopics);
   }
 
-  /*  getUser(): Observable<any>{
+  getAllUsers(): Observable<any>{
      return this.http.get<any>(this.rootUrl);
-  }*/
+  }
+  getMyFriends(userName: String) : Observable<any>{
+    return this.http.get<any>(this.rootUrl+'/'+userName+'/friend');
+  }
   getUser(userName: String) : Observable<any>{
     return this.http.get<any>(this.rootUrl+'/'+userName);
+  }
+
+  addFriend(myPseudo: String, user:User) : Observable<any>{
+    return this.http.put<any>(this.rootUrl+'/'+myPseudo+'/friend',user);
+  }
+
+  deleteFriend(myPseudo: String, friend:string) : Observable<any>{
+    return this.http.delete<any>(this.rootUrl+'/'+myPseudo+'/friend/'+friend);
   }
 }
