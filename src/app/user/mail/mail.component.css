@@ -25,13 +25,13 @@ section{
   border-radius: 8px;
   margin-bottom: 20px;
 }
-.form-group{
+.form{
   width: 100%;
   margin-top: 20px ;
   font-size: 20px;
 }
-.form-group input,
-.form-group textarea{
+.form input,
+.form textarea{
   width: 100%;
   padding: 5px;
   font-size: 18px;
@@ -49,14 +49,14 @@ button[type="submit"]{
   font-size: 24px;
   border-radius: 8px;
   font-family: Montserrat;
-  color: cornflowerblue;
+  color: lightseagreen;
   text-align: center;
   cursor: pointer;
   margin-top: 10px;
   transition: .3s ease background-color;
 }
 button[type="submit"]:hover{
-  background-color: aliceblue;
+  background-color: moccasin;
 }
 #status{
   width: 90%;
@@ -67,7 +67,7 @@ button[type="submit"]:hover{
   border-radius: 8px;
 }
 #status.success{
-  background-color: beige;
+  background-color: darkorange;
   animation: status 4s ease forwards;
 }
 #status.error{
@@ -76,39 +76,29 @@ button[type="submit"]:hover{
   animation: status 4s ease forwards;
 }
 
-@keyframes status {
-  0%{
-    opacity: 1;
-    pointer-events: all;
-  }
-  90%{
-    opacity: 1;
-    pointer-events: all;
-  }
-  100%{
-    opacity: 0;
-    pointer-events: none;
-  }
-
-}
 
 form {
 
   padding: 1.5%;
   text-align: center;
   box-sizing: border-box;
-  border: 2px solid red;
+  border: 1px solid rgba(128, 128, 128, 0.199);
   border-radius: 4px;
   background-color: aliceblue;
   left: 10cm;
 }
-input[type=text] {
+input[type=text],select, textarea {
   width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 2px solid red;
+  border: 1px solid rgba(128, 128, 128, 0.199);
   border-radius: 4px;
+}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 input[textarea] {
   width: 100%;
@@ -120,3 +110,4 @@ input[textarea] {
   resize: none;
   border: 2px solid red;
 }
+h1 { color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; }

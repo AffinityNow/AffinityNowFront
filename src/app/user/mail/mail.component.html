@@ -1,8 +1,10 @@
-<h1>MAIL</h1>
+<br><div align="center"><h1>MAIL</h1></div><br>
+<div class="container">
 <form #mailPost = "ngForm" (ngSubmit)="onSubmit(mailPost.value)">
   <input type="text" name="from" ngModel placeholder="from"><br><br>
   <input type="text" name="to" ngModel placeholder="to"><br><br>
-  <input type="text" name="body" ngModel placeholder="body"><br><br>
-  <textarea id="subject" name="subject" ngModel placeholder="Write something.." style="height:200px"></textarea>
-  <button type="submit">Submit Data</button>
+  <input type="text" name="subject" ngModel placeholder="subject"><br><br>
+  <textarea id="subject" name="body" ngModel placeholder="Write something.." style="height:200px"></textarea>
+  <button type="submit">Submit ton MAIL</button>
 </form>
+</div>
