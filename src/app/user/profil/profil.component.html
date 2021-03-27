@@ -66,7 +66,7 @@
   </p-splitter>
   <div class="card">
     <h5 style="text-align: center; margin: 2%">Managing Friends</h5>
-    <p-splitter [style]="{'height': '200px'}" styleClass="p-mb-5">
+    <p-splitter [style]="{'height': '300px'}" styleClass="p-mb-5">
       <ng-template pTemplate>
         <div class="p-col p-d-flex p-jc-center">
           <form class="form" (ngSubmit)="addFriend()" name="form">
@@ -90,6 +90,7 @@
           </form>
          </div>
       </ng-template>
+
       <ng-template pTemplate>
         <div class="p-col p-d-flex p-jc-center">
           <form class="form" (ngSubmit)="removeFriend()" name="form">
@@ -114,5 +115,6 @@
         </div>
       </ng-template>
     </p-splitter>
+    <button pButton type="button" icon="fa fa-refresh"(click)="refresh()" label="Refresh" style="margin-left: 47%; margin-bottom: 4%" ></button>
   </div>
 </div>

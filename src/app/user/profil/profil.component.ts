@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../shared/service/user.service';
 import {User} from '../../shared/model/user.model';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ProfilComponent implements OnInit {
   friends: User[];
 
 
-  constructor(private userservice: UserService) {
+  constructor(private userservice: UserService, private toastr: ToastrService,) {
   }
 
   ngOnInit() {
@@ -41,17 +42,29 @@ export class ProfilComponent implements OnInit {
   }
 
   addFriend() {
-    this.userservice.addFriend("jean", this.selectedUser).subscribe((newfriend) => {
-        console.log('newfriend : ', newfriend);
-      }
-    );
+    this.userservice.addFriend('jean', this.selectedUser).subscribe((newfriend) => {
+      console.log('newfriend : ', newfriend);
+      this.toastr.success('friend added',"info",{ positionClass: 'toast-top-center',  timeOut: 9500})
+    }, error => {
+      this.toastr.error('your can not add yourself!', 'Error', {
+        positionClass: 'toast-top-center',
+      });
+    });
   }
 
-
   removeFriend() {
-    this.userservice.deleteFriend("jean",this.selectedFriend.pseudo).subscribe((notFriend) => {
-        console.log('friends : ', notFriend);
-      }
-    );
+    this.userservice.deleteFriend('jean', this.selectedFriend.pseudo).subscribe((notFriend) => {
+      console.log('friend: ', notFriend);
+      this.toastr.success('friend removed',"info",{ positionClass: 'toast-top-center',  timeOut: 9500})
+    }, error => {
+      this.toastr.error('something went wrong', 'Error', {
+        positionClass: 'toast-top-center',
+      });
+    });
+
+  }
+
+  refresh() {
+       window.location.reload();
   }
 }
