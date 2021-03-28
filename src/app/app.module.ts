@@ -37,6 +37,18 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
+import {UserModule} from './user/user.module';
+import {MailComponent} from './user/mail/mail.component';
+import {ConnectionComponent} from './user/connection/connection.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {TableModule} from 'primeng/table';
+import {TreeTableModule} from 'primeng/treetable';
+import {SplitterModule} from 'primeng/splitter';
+import {CommonModule} from '@angular/common';
+import {AgGridModule} from 'ag-grid-angular';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   {
@@ -48,12 +60,20 @@ const appRoutes: Routes = [
     component: SignupComponent
   },
   {
+    path: 'connect',
+    component: ConnectionComponent
+  },
+  {
     path: 'matchOption',
     component: MatchOptionComponent
   },
   {
     path: 'profil',
     component: ProfilComponent
+  },
+  {
+    path: 'mail',
+    component: MailComponent
   },
   ];
 @NgModule({
@@ -62,48 +82,66 @@ const appRoutes: Routes = [
     HomeComponent,
     FooterComponent,
     HeaderComponent,
+    ConnectionComponent,
     SignupComponent,
     MatchOptionComponent,
     MatchResComponent,
-    ProfilComponent
+    ProfilComponent,
+    MailComponent,
   ],
-  imports: [
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
-    BrowserModule,
-    RouterModule,
-    OrderListModule,
-    BrowserAnimationsModule,
-    OrderListModule,
-    HttpClientModule,
-    FormsModule,
-    GridModule,
-    DropDownsModule,
-    RowFilterModule,
-    InputsModule,
-    DropdownModule,
-    NgSelectModule,
-    ReactiveFormsModule,
-    LabelModule,
-    SlickCarouselModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSelectModule,
-    MatSortModule,
-    CarouselModule,
-    ButtonModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MultiSelectModule,
-    SelectButtonModule,
-    ButtonModule,
-    RadioButtonModule
-  ],
+    imports: [
+        RouterModule.forRoot(appRoutes),
+        HttpClientModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
+        BrowserModule,
+        RouterModule,
+        OrderListModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        GridModule,
+        DropDownsModule,
+        RowFilterModule,
+        InputsModule,
+        DropdownModule,
+        NgSelectModule,
+        LabelModule,
+        SlickCarouselModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatSortModule,
+        CarouselModule,
+        ButtonModule,
+        MatAutocompleteModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MultiSelectModule,
+        SelectButtonModule,
+        ButtonModule,
+        RadioButtonModule,
+        UserModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatIconModule,
+        TableModule,
+        TreeTableModule,
+        SplitterModule,
+        CommonModule,
+        GridModule,
+        GridModule,
+        AgGridModule,
+        GridModule,
+        MatTableModule,
+        MatPaginatorModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        ReactiveFormsModule
+    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
   bootstrap: [AppComponent]

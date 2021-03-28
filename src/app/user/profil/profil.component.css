@@ -1,3 +1,9 @@
 mat-table{
   width: 20%;
 }
+.ui-dropdown    {
+  height:5% !important;
+}
+a{
+  font-size: 22px;
+}

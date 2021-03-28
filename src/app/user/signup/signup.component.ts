@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import '../../shared/model/ratedtopic.model';
 import '../../shared/model/rateitem.model';
 import {RateItem} from '../../shared/model/rateitem.model';
@@ -18,7 +18,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-
   user: User = new User();
   ratings: RateItem [] = [
     {name: '★★★★★', score: 'FIVE',},
@@ -28,6 +27,7 @@ export class SignupComponent {
     {name: '★', score: 'ONE'},
     {name: '', score: 'ZERO'}
   ];
+
 
   constructor(private topicService: TopicService,
               private primengConfig: PrimeNGConfig,
@@ -39,7 +39,7 @@ export class SignupComponent {
 
   ngOnInit(): void {
 
-    this.topicService.getTopics().then((topic) => {
+    this.topicService.getTopics().subscribe((topic) => {
         console.log(topic);
         this.user.topics = topic.map(t => new RatedTopic(t, this.ratings[5], this.ratings[5]));
       }
@@ -63,7 +63,7 @@ export class SignupComponent {
       .subscribe(data => {
         this.toastr.success('User registration successful');
         setTimeout(() => {
-          this.router.navigate(['./matchOption']);
+          this.router.navigate(['./connect']);
         }, 2000)
 
       }, error => {

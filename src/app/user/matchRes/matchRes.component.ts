@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {Component, Input, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-match-res',
@@ -8,21 +7,21 @@ import {MatSort} from '@angular/material/sort';
   styleUrls: ['./matchRes.component.css']
 })
 //child
-export class MatchResComponent implements AfterViewInit {
+export class MatchResComponent implements OnInit {
   @Input() dataSource;
-  displayedColums = ['pseudo', 'quality'];
 
-
+  commonTopics: any[]
+  cols: any[];
   constructor() {
   }
 
-  title = 'AffinityNowFront';
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
-  ngAfterViewInit() {
-    // this.dataSource.value.sort(this.MatSort);
-    // this.dataSource.value.sort(this.MatPaginator);
+  ngOnInit() {
+    console.log('match result',this.dataSource);
+    this.cols =
+      [
+      {field: 'pseudo', header: 'Pseudo'},
+      {field: 'quality', header: 'Quality'},
+      {field: 'commonTopics', header: 'CommonTopics'},
+    ];
   }
 }
-

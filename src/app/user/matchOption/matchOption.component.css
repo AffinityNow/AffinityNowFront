@@ -1,6 +1,6 @@
 body {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 100;
   line-height: 1.5;
   /* Body position must be relative while using appendTo */
   position: relative;
@@ -9,13 +9,13 @@ body {
 
 .container{
   margin-top: 5%;
-  font-size: 20px;
-  margin-bottom: 10%;
+  font-size: 10px;
+  margin-bottom: 5%;
 }
 
 h1 {
   text-align: center;
-  font-size: 50px;
+  font-size: 10px;
   line-height: 40px;
   font-family:Georgia,serif;
   color:#4E443C;
@@ -49,9 +49,6 @@ P{
   font-size: 20px;
   margin-bottom: 10%;
 }
-.username{
-  text-align: center;
-}
 p-carousel{
   border-radius: 3px;
   margin: .3rem;
@@ -83,7 +80,7 @@ P{
 
 .username{
   text-align: center;
-  margin-top: 5%;
+  margin-left: 14%;
 }
 
 p-multiSelect{
@@ -99,4 +96,7 @@ p-multiSelect{
 }
 .radioButton{
   margin-bottom: 3% ; text-align: center;
+}
+.one{
+ padding-right: 2%;
 }

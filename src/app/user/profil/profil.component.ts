@@ -1,14 +1,8 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {User} from '../../shared/model/user.model';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../shared/service/user.service';
-import {DataSource} from '@angular/cdk/collections';
-import {Observable} from 'rxjs';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {FormControl} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
-import{MatTableDataSource} from '@angular/material/table';
-import {HttpClient} from '@angular/common/http';
+import {Knowledge, User, UserProfil} from '../../shared/model/user.model';
+import {ToastrService} from 'ngx-toastr';
+import {Route, Router} from '@angular/router';
 
 
 @Component({
@@ -18,38 +12,73 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class ProfilComponent implements OnInit {
-  title = 'AffinityNowFront';
-  dataSource = new UserDataSource(this.userService);
-  // dataSource1 = new UserDataSource(this.topicService);
- // dataSource = new MatTableDataSource(this.userService);
-  displayedColums = ['pseudo', 'friend'];
-  displayedColums1 = ['name'];
-  filteredOptions: Observable<User[]>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  constructor(private userService: UserService ,private http: HttpClient) { }
- /* applyFilter(filterValue: string){
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }*/
-  ngOnInit(): void {}
-  readonly rootUrl = 'http://localhost:8080/user';
+  user: UserProfil;
+  users: User[];
+  selectedUser: User;
+  commonTopics: any[];
+  cols: any[];
+  selectedFriend: User;
+  friends: User[];
 
 
-  updateFriend(){
-    // @ts-ignore
-    return this.http.put(this.rootUrl+"/jean/friend");
+  constructor(private userservice: UserService, private toastr: ToastrService, private router : Router) {
   }
-}
 
+  ngOnInit() {
+    this.user = this.userservice.getConnectedUser();
+    console.log('user connected : ', this.user);
+    this.userservice.getMyFriends(this.user.pseudo).subscribe((friends) => {
+      this.friends = friends;
+      console.log('friends : ', this.friends);
+    });
+    this.userservice.getAllUsers().subscribe((users) => {
+      this.users = users;
+      console.log('users : ', this.users);
+    });
 
-export class UserDataSource extends DataSource<any>{
-  constructor(private userService: UserService) {
-    super();
+    // this.cols =
+    //   [
+    //     {field: 'likedknowledges', header: 'Liked Topics'},
+    //     {field: 'level', header: 'Rating'},
+    //   ];
+  }
+
+  addFriend() {
+    this.userservice.addFriend(this.user.pseudo, this.selectedUser).subscribe((newfriend) => {
+      console.log('newfriend : ', newfriend);
+      this.toastr.success('friend added', 'info', {positionClass: 'toast-top-center', timeOut: 9500});
+    }, error => {
+      this.toastr.error('your can not add yourself!', 'Error', {
+        positionClass: 'toast-top-center',
+      });
+    });
+  }
+
+  removeFriend() {
+    this.userservice.deleteFriend(this.user.pseudo, this.selectedFriend.pseudo).subscribe((notFriend) => {
+      console.log('friend: ', notFriend);
+      this.toastr.success('friend removed', 'info', {positionClass: 'toast-top-center', timeOut: 9500});
+    }, error => {
+      this.toastr.error('something went wrong', 'Error', {
+        positionClass: 'toast-top-center',
+      });
+    });
 
   }
-  connect(): Observable<User[]> {
-    return this.userService.getUser();
-  }
-  disconnect() { }
 
+  refresh() {
+    this.router.navigate(['./connect']);
+  }
+
+  getAllLikedKnowledges(): Knowledge[] {
+    let cu = this.userservice.getConnectedUser();
+    let likedKnowLedges = cu.likedKnowledges;
+    return Object.entries(likedKnowLedges).map(item => item[1]);
+  }
+
+  getAllSeekedKnowledges(): Knowledge[] {
+    let cu = this.userservice.getConnectedUser();
+    let seekedKnowledges = cu.seekedKnowledges;
+    return Object.entries(seekedKnowledges).map(item => item[1]);
+  }
 }

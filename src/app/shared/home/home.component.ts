@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   redirect2() {
-    this.router.navigate(['./matchOption']);
+    this.router.navigate(['./connect']);
   }
 
   redirect3() {
