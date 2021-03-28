@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
@@ -7,10 +7,10 @@ import {HomeComponent} from './shared/home/home.component';
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from './shared/footer/footer.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from './shared/header/header.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {SignupComponent} from './user/signup/signup.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
 import {TopicService} from './shared/service/TopicService';
 import {UserService} from './shared/service/user.service';
@@ -27,6 +27,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatchResComponent} from './user/matchRes/matchRes.component';
 import {CarouselModule} from 'primeng/carousel';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
 import {ButtonModule} from 'primeng/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -37,12 +38,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
-import {UserModule} from './user/user.module';
-import {ConnectionComponent} from './user/connection/connection.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
-
+import {UserprofilComponent} from './user/userprofil/userprofil.component';
+import {MailComponent} from './user/mail/mail.component';
+import {EmailComponent} from './user/email/email.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -64,6 +62,14 @@ const appRoutes: Routes = [
     path: 'profil',
     component: ProfilComponent
   },
+  {
+    path: 'mail',
+    component: MailComponent
+  },
+  {
+    path: 'email',
+    component: EmailComponent
+  },
   ];
 @NgModule({
   declarations: [
@@ -75,7 +81,10 @@ const appRoutes: Routes = [
     SignupComponent,
     MatchOptionComponent,
     MatchResComponent,
-    ProfilComponent
+    ProfilComponent,
+    UserprofilComponent,
+    EmailComponent,
+    MailComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -84,18 +93,18 @@ const appRoutes: Routes = [
     ToastrModule.forRoot(), // ToastrModule added
     BrowserModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     OrderListModule,
     BrowserAnimationsModule,
     OrderListModule,
     HttpClientModule,
-    FormsModule,
     GridModule,
     DropDownsModule,
     RowFilterModule,
     InputsModule,
     DropdownModule,
     NgSelectModule,
-    ReactiveFormsModule,
     LabelModule,
     SlickCarouselModule,
     MatTableModule,
@@ -112,11 +121,7 @@ const appRoutes: Routes = [
     MultiSelectModule,
     SelectButtonModule,
     ButtonModule,
-    RadioButtonModule,
-    UserModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatIconModule
+    BrowserModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],

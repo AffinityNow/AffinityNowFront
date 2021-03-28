@@ -51,4 +51,12 @@ export class UserService {
   getUser(userName: String) : Observable<any>{
     return this.http.get<any>(this.rootUrl+'/'+userName);
   }
+  addFriend() {
+    return 0;
+  }
+
+  deleteFriend(){
+    return 0;
+  }
+
 }

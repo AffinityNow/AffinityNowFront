@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {FormControl} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
+import {catchError, map, startWith} from 'rxjs/operators';
 import{MatTableDataSource} from '@angular/material/table';
 import {HttpClient} from '@angular/common/http';
 
@@ -19,11 +19,12 @@ import {HttpClient} from '@angular/common/http';
 
 export class ProfilComponent implements OnInit {
   title = 'AffinityNowFront';
+  userName: any;
+  users: User[] = [];
   dataSource = new UserDataSource(this.userService);
   // dataSource1 = new UserDataSource(this.topicService);
  // dataSource = new MatTableDataSource(this.userService);
-  displayedColums = ['pseudo', 'friend'];
-  displayedColums1 = ['name'];
+  displayedColums = ['pseudo', 'ADD', 'DELETE'];
   filteredOptions: Observable<User[]>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -35,9 +36,14 @@ export class ProfilComponent implements OnInit {
   readonly rootUrl = 'http://localhost:8080/user';
 
 
-  updateFriend(){
-    // @ts-ignore
-    return this.http.put(this.rootUrl+"/jean/friend");
+  Search(){
+   if (this.userName == ""){
+     this.ngOnInit();
+   }else{
+     this.users = this.users.filter(res =>{
+       return res.userName.toLocaleLowerCase().match(this.userName.toLocaleLowerCase());
+     });
+   }
   }
 }
 
