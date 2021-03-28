@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../model/user.model';
+import {User, UserProfil} from '../model/user.model';
 import {Observable} from 'rxjs';
 
 
 @Injectable()
 export class UserService {
-  connectedUser:User;
+  connectedUser:UserProfil;
   readonly rootUrl = 'http://localhost:8080/user';
    constructor(private http: HttpClient) {
   }
@@ -62,13 +62,13 @@ export class UserService {
     return this.http.delete<any>(this.rootUrl+'/'+myPseudo+'/friend/'+friend);
   }
 
-  getUser(userName: String) : Observable<any>{
+  getUser(userName: String) : Observable<UserProfil>{
     return this.http.get<any>(this.rootUrl+'/'+userName);
   }
-  getConnectedUser(){
+  getConnectedUser():UserProfil{
      return this.connectedUser;
   }
-  setConnectedUser(connectedUser : User){
+  setConnectedUser(connectedUser : UserProfil){
     this.connectedUser = connectedUser;
   }
 }
