@@ -41,6 +41,7 @@ import {ProfilComponent} from './user/profil/profil.component';
 import {UserprofilComponent} from './user/userprofil/userprofil.component';
 import {MailComponent} from './user/mail/mail.component';
 import {EmailComponent} from './user/email/email.component';
+import {ConnectionComponent} from './user/connection/connection.component';
 const appRoutes: Routes = [
   {
     path: '',
