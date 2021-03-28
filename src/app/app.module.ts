@@ -40,7 +40,6 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
 import {UserprofilComponent} from './user/userprofil/userprofil.component';
 import {MailComponent} from './user/mail/mail.component';
-import {EmailComponent} from './user/email/email.component';
 import {ConnectionComponent} from './user/connection/connection.component';
 const appRoutes: Routes = [
   {
@@ -67,10 +66,6 @@ const appRoutes: Routes = [
     path: 'mail',
     component: MailComponent
   },
-  {
-    path: 'email',
-    component: EmailComponent
-  },
   ];
 @NgModule({
   declarations: [
@@ -84,7 +79,6 @@ const appRoutes: Routes = [
     MatchResComponent,
     ProfilComponent,
     UserprofilComponent,
-    EmailComponent,
     MailComponent
   ],
   imports: [
