@@ -38,6 +38,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProfilComponent} from './user/profil/profil.component';
 import {UserModule} from './user/user.module';
+import {MailComponent} from './user/mail/mail.component';
+import {EmailComponent} from './user/email/email.component';
 import {ConnectionComponent} from './user/connection/connection.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
@@ -78,7 +80,9 @@ const appRoutes: Routes = [
     SignupComponent,
     MatchOptionComponent,
     MatchResComponent,
-    ProfilComponent
+    ProfilComponent,
+    EmailComponent,
+    MailComponent
   ],
     imports: [
         RouterModule.forRoot(appRoutes),
