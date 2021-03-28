@@ -16,11 +16,11 @@ Written in JAVA 14 (back) and Angular 11 (Front).
    * Create user profile (Username)
    * Match people based on mutual interest 
    * Authentication and choosing match method
-
-   ......coming soon
-
+   * managing your friend list
+   * managing your profil
    * Search users by Username
-   * Send audio messages, text, graphic, messages
+   * Send messages by email
+     ......coming next
    * Check message read/delivery status
    * Take a picture from camera or gallery
    * Display graphics in full screen view, zoom in/out, drag and rotate
