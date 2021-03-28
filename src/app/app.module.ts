@@ -47,6 +47,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {TableModule} from 'primeng/table';
 import {TreeTableModule} from 'primeng/treetable';
 import {SplitterModule} from 'primeng/splitter';
+import {CommonModule} from '@angular/common';
+import {AgGridModule} from 'ag-grid-angular';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   {
@@ -69,6 +72,10 @@ const appRoutes: Routes = [
     path: 'profil',
     component: ProfilComponent
   },
+  {
+    path: 'mail',
+    component: MailComponent
+  },
   ];
 @NgModule({
   declarations: [
@@ -82,7 +89,7 @@ const appRoutes: Routes = [
     MatchResComponent,
     ProfilComponent,
     EmailComponent,
-    MailComponent
+    MailComponent,
   ],
     imports: [
         RouterModule.forRoot(appRoutes),
@@ -93,7 +100,6 @@ const appRoutes: Routes = [
         RouterModule,
         OrderListModule,
         BrowserAnimationsModule,
-        OrderListModule,
         HttpClientModule,
         FormsModule,
         GridModule,
@@ -102,7 +108,6 @@ const appRoutes: Routes = [
         InputsModule,
         DropdownModule,
         NgSelectModule,
-        ReactiveFormsModule,
         LabelModule,
         SlickCarouselModule,
         MatTableModule,
@@ -126,7 +131,18 @@ const appRoutes: Routes = [
         MatIconModule,
         TableModule,
         TreeTableModule,
-        SplitterModule
+        SplitterModule,
+        CommonModule,
+        GridModule,
+        GridModule,
+        AgGridModule,
+        GridModule,
+        MatTableModule,
+        MatPaginatorModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        ReactiveFormsModule
     ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpClient, TopicService, UserService],
