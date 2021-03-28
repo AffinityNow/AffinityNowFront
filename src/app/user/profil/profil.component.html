@@ -1,10 +1,10 @@
 <div class="card">
-  <h5 style="text-align: center; margin: 2%">View your interests</h5>
+  <h5 style="text-align: center; margin: 2%"><a class="btn" routerLink="/matchOption">Check your Match{{"  "+"'"+user.pseudo+"'"}}</a></h5>
   <p-splitter [style]="{'height': '300px'}" styleClass="p-mb-5">
     <ng-template pTemplate>
       <div class="p-col p-d-flex p-jc-center">
         <div class="card" style="margin-top: 3%">
-          <p-table [value]="info" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+          <p-table [value]="user" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                    [rowsPerPageOptions]="[5,10,15]">
             <ng-template pTemplate="header">
@@ -35,7 +35,7 @@
     <ng-template pTemplate>
       <div class="p-col p-d-flex p-jc-center">
         <div class="card" style="margin-top: 3%">
-          <p-table [value]="info" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+          <p-table [value]="user" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                    [rowsPerPageOptions]="[5,10,15]">
             <ng-template pTemplate="header">

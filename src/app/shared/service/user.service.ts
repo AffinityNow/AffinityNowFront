@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService {
+  connectedUser:User;
   readonly rootUrl = 'http://localhost:8080/user';
    constructor(private http: HttpClient) {
   }
@@ -52,9 +53,6 @@ export class UserService {
   getMyFriends(userName: String) : Observable<any>{
     return this.http.get<any>(this.rootUrl+'/'+userName+'/friend');
   }
-  getUser(userName: String) : Observable<any>{
-    return this.http.get<any>(this.rootUrl+'/'+userName);
-  }
 
   addFriend(myPseudo: String, user:User) : Observable<any>{
     return this.http.put<any>(this.rootUrl+'/'+myPseudo+'/friend',user);
@@ -62,5 +60,15 @@ export class UserService {
 
   deleteFriend(myPseudo: String, friend:string) : Observable<any>{
     return this.http.delete<any>(this.rootUrl+'/'+myPseudo+'/friend/'+friend);
+  }
+
+  getUser(userName: String) : Observable<any>{
+    return this.http.get<any>(this.rootUrl+'/'+userName);
+  }
+  getConnectedUser(){
+     return this.connectedUser;
+  }
+  setConnectedUser(connectedUser : User){
+    this.connectedUser = connectedUser;
   }
 }

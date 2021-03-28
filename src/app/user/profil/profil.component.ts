@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../shared/service/user.service';
 import {User} from '../../shared/model/user.model';
 import {ToastrService} from 'ngx-toastr';
@@ -11,8 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 
 export class ProfilComponent implements OnInit {
-  @Input() info;
-
+  user : User;
   users: User[];
   selectedUser: User;
   commonTopics: any[];
@@ -21,11 +20,14 @@ export class ProfilComponent implements OnInit {
   friends: User[];
 
 
+
   constructor(private userservice: UserService, private toastr: ToastrService,) {
   }
 
   ngOnInit() {
-    this.userservice.getMyFriends('jean').subscribe((friends) => {
+    this.user=this.userservice.getConnectedUser();
+    console.log('user connected : ', this.user);
+    this.userservice.getMyFriends(this.user.pseudo).subscribe((friends) => {
       this.friends = friends;
       console.log('friends : ', this.friends);
     });
@@ -33,7 +35,7 @@ export class ProfilComponent implements OnInit {
       this.users = users;
       console.log('users : ', this.users);
     });
-    console.log('match result', this.info);
+
     this.cols =
       [
         {field: 'likedknowledges', header: 'Liked Topics'},
@@ -42,7 +44,7 @@ export class ProfilComponent implements OnInit {
   }
 
   addFriend() {
-    this.userservice.addFriend('jean', this.selectedUser).subscribe((newfriend) => {
+    this.userservice.addFriend(this.user.pseudo, this.selectedUser).subscribe((newfriend) => {
       console.log('newfriend : ', newfriend);
       this.toastr.success('friend added',"info",{ positionClass: 'toast-top-center',  timeOut: 9500})
     }, error => {
@@ -53,7 +55,7 @@ export class ProfilComponent implements OnInit {
   }
 
   removeFriend() {
-    this.userservice.deleteFriend('jean', this.selectedFriend.pseudo).subscribe((notFriend) => {
+    this.userservice.deleteFriend(this.user.pseudo, this.selectedFriend.pseudo).subscribe((notFriend) => {
       console.log('friend: ', notFriend);
       this.toastr.success('friend removed',"info",{ positionClass: 'toast-top-center',  timeOut: 9500})
     }, error => {

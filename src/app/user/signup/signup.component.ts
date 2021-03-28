@@ -18,7 +18,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  @Input() info;
   user: User = new User();
   ratings: RateItem [] = [
     {name: '★★★★★', score: 'FIVE',},
@@ -62,10 +61,9 @@ export class SignupComponent {
     }
     this.userService.registerUser(this.user)
       .subscribe(data => {
-        this.info = data;
         this.toastr.success('User registration successful');
         setTimeout(() => {
-          // this.router.navigate(['./profil']);
+          this.router.navigate(['./connect']);
         }, 2000)
 
       }, error => {

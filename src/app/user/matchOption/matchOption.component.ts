@@ -15,6 +15,7 @@ import {TopicService} from '../../shared/service/TopicService';
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
+  connectedUser;
   matchRes;
   methods;
   selectedMethods;
@@ -32,7 +33,7 @@ export class MatchOptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-   // this.selectedTopics=[];
+   this.connectedUser = this.userService.getConnectedUser().pseudo;
 
     this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
     this.topicService.getTopics().subscribe((topics) => {
@@ -59,7 +60,7 @@ export class MatchOptionComponent implements OnInit {
       });
       return;
     }
-    this.userService.getMatchedUsers(this.user.pseudo, res, this.selectedTopics.map(topic => topic.name) )
+    this.userService.getMatchedUsers(this.connectedUser, res, this.selectedTopics.map(topic => topic.name) )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
         this.matchRes = data;
