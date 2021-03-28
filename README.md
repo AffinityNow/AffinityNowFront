@@ -12,6 +12,8 @@ Written in JAVA 14 (back) and Angular 11 (Front).
 
 ![Login](src/assets/pic/login.png)
 
+![Match](src/assets/pic/matching.png)
+
 ### Features
    * Create user profile (Username)
    * Match people based on mutual interest 
@@ -19,7 +21,7 @@ Written in JAVA 14 (back) and Angular 11 (Front).
    * managing your friend list
    * managing your profil
    * Search users by Username
-   * Send messages by email
+   * Send messages by email  
      ......coming next
    * Check message read/delivery status
    * Take a picture from camera or gallery
