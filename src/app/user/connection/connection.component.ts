@@ -11,9 +11,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./connection.component.css']
 })
 export class ConnectionComponent implements OnInit {
-  user: User = new User();
   loginForm: any;
   userName: string;
+  pseudo: string;
   constructor(  private userService: UserService, private toastr: ToastrService, private router: Router, private _formBuilder: FormBuilder) {
     this.loginForm = this._formBuilder.group({
       pseudo: [ "", Validators.required ],
@@ -24,12 +24,12 @@ export class ConnectionComponent implements OnInit {
   }
 
   login() {
-      this.userService.getUser(this.user.userName)
-        .subscribe(data => {
+      this.userService.getUser(this.pseudo)
+          .subscribe(user => {
           this.toastr.success('Connection succeeded');
-          this.userName = data;
-          console.log("user est :", this.userName)
-          this.router.navigate(['./matchOption']);
+          this.userService.setConnectedUser(user);
+          console.log("user est :", user)
+          this.router.navigate(['./profil']);
 
           console.log('connection succeeded');
         }, error => {

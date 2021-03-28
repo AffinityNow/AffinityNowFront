@@ -1,31 +1,129 @@
-<p xmlns="http://www.w3.org/1999/html"></p>
-<h1>Ajout de Friends </h1>
-<div class="mat-elevation-z8">
-<nav class="narbar">
-  <input class="form-control" type="text" name="userName" [(ngModel)]="userName"(ngModelChange)="Search()" placeholder="Enter First name to search">
-</nav>
-  <mat-table [dataSource]="dataSource">
+<div class="card">
+  <h5 style="text-align: center; margin: 2%"><a class="btn" routerLink="/matchOption">Check your Match{{"  "+"'"+user.pseudo+"'"}}</a></h5>
+  <p-splitter [style]="{'height': '400px'}" styleClass="p-mb-5">
 
-    <ng-container matColumnDef="pseudo">
+    <ng-template pTemplate>
+      <div class="p-col p-d-flex p-jc-center">
+        <div class="card" style="margin-top: 3%">
+          <p-table [value]="getAllLikedKnowledges()" [paginator]="true" [rows]="2" [showCurrentPageReport]="true"
+                   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                   [rowsPerPageOptions]="[5,10,15]">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Liked Topics</th>
+                <th>Rating</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td>
+                  <ul>
+                    <li >{{item.topic.name}}</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li >{{item.level}}</li>
+                  </ul>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
 
-      <mat-header-cell *matHeaderCellDef> PSEUDO</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.pseudo}}</mat-cell>
+      </div>
+    </ng-template>
 
-    </ng-container>
 
-    <ng-container matColumnDef="ADD">
-      <mat-header-cell *matHeaderCellDef> ADD </mat-header-cell>
-      <mat-cell *matCellDef="let user"> <button mat-raised-button color="primary" (click)="addFriend()">ADD</button> </mat-cell>
-      </ng-container>
-    <ng-container matColumnDef="DELETE">
-      <mat-header-cell *matHeaderCellDef> DELETE </mat-header-cell>
-       <mat-cell *matCellDef="let user "> <button mat-raised-button color="primary" (click)="deleteFriend()">Delete</button> </mat-cell>
-    </ng-container>
+    <ng-template pTemplate>
+      <div class="p-col p-d-flex p-jc-center">
+        <div class="card" style="margin-top: 3%">
+          <p-table [value]="getAllSeekedKnowledges()" [paginator]="true" [rows]="2" [showCurrentPageReport]="true"
+                   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                   [rowsPerPageOptions]="[5,10,15]">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Seeked Topics</th>
+                <th>Rating</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td>
+                  <ul>
+                    <li >{{item.topic.name}}</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>{{item.level}}</li>
+                  </ul>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </ng-template>
 
-    <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColums"></mat-row>
 
-  </mat-table>
+  </p-splitter>
 
-    </div>
 
+
+  <div class="card">
+    <h5 style="text-align: center; margin: 2%">Managing Friends</h5>
+    <p-splitter [style]="{'height': '300px'}" styleClass="p-mb-5">
+      <ng-template pTemplate>
+        <div class="p-col p-d-flex p-jc-center">
+          <form class="form" (ngSubmit)="addFriend()" name="form">
+            <p-dropdown [options]="users" [(ngModel)]="selectedUser" name="pseudo" optionLabel="pseudo" [filter]="true" filterBy="pseudo"
+                        [showClear]="true" placeholder="add a new friend">
+              <ng-template pTemplate="selectedItem">
+                <div  *ngIf="selectedUser">
+                  <div>{{selectedUser.pseudo}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-user pTemplate="pseudo">
+                <div>
+                  <div>{{user.pseudo}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div style="text-align: center; padding-top: 4%">
+              <button pButton type="submit" class="p-button-raised p-button-success" icon="fa-floppy-o" label="Add">
+              </button>
+            </div>
+          </form>
+         </div>
+      </ng-template>
+
+      <ng-template pTemplate>
+        <div class="p-col p-d-flex p-jc-center">
+          <form class="form" (ngSubmit)="removeFriend()" name="form">
+            <p-dropdown [options]="friends" [(ngModel)]="selectedFriend" name="pseudo" optionLabel="pseudo" [filter]="true" filterBy="pseudo"
+                        [showClear]="true" placeholder="delete a friend">
+              <ng-template pTemplate="selectedItem">
+                <div  *ngIf="selectedFriend">
+                  <div>{{selectedFriend.pseudo}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-friend pTemplate="pseudo">
+                <div>
+                  <div>{{friend.pseudo}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div style="text-align: center; padding-top: 4%">
+              <button pButton type="submit" class="p-button-raised p-button-danger" icon="fa-floppy-o" label="Remove">
+              </button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+    </p-splitter>
+    <button pButton type="button" icon="fa fa-refresh"(click)="refresh()" label="Refresh" style="margin-left: 47%; margin-bottom: 4%" ></button>
+  </div>
+
+
+</div>

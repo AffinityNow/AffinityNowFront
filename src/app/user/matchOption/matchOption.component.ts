@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {User} from '../../shared/model/user.model';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
 import {ToastrService} from 'ngx-toastr';
 import {MatchMethods, Topic} from '../../shared/model/topic.model';
@@ -15,6 +15,7 @@ import {TopicService} from '../../shared/service/TopicService';
 })
 export class MatchOptionComponent implements OnInit {
   user: User = new User();
+  connectedUser;
   matchRes;
   methods;
   selectedMethods;
@@ -32,10 +33,10 @@ export class MatchOptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-   // this.selectedTopics=[];
+   this.connectedUser = this.userService.getConnectedUser().pseudo;
 
     this.methods = [MatchMethods.SCOREDOUBLE, MatchMethods.SEEKEDDOUBLE];
-    this.topicService.getTopics().then((topics) => {
+    this.topicService.getTopics().subscribe((topics) => {
       this.topics=topics;
       }
     );
@@ -59,12 +60,12 @@ export class MatchOptionComponent implements OnInit {
       });
       return;
     }
-    this.userService.getMatchedUsers(this.user.userName, res, this.selectedTopics.map(topic => topic.name) )
+    this.userService.getMatchedUsers(this.connectedUser, res, this.selectedTopics.map(topic => topic.name) )
       .subscribe(data => {
         this.toastr.success('Maching succeeded');
         this.matchRes = data;
 
-        console.log('match result',this.matchRes);
+        // console.log('match result',this.matchRes);
       }, error => {
         this.toastr.error(' unknown User', 'Error', {
           positionClass: 'toast-top-center',

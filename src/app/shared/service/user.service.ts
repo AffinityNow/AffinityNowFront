@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../model/user.model';
+import {User, UserProfil} from '../model/user.model';
 import {Observable} from 'rxjs';
 
 
 @Injectable()
 export class UserService {
+  connectedUser:UserProfil;
   readonly rootUrl = 'http://localhost:8080/user';
    constructor(private http: HttpClient) {
   }
 
   registerUser(user: User): Observable<User> {
     const requestBody = {
-      pseudo: user.userName,
+      pseudo: user.pseudo,
       likedKnowledges: {}, // objet likedTopics vide
       seekedKnowledges: {} // objet seekedTopics vide
     };
@@ -45,18 +46,29 @@ export class UserService {
   getMatchedUsers(userName: String, methodName:String[], selectedTopics:String[]) : Observable<any>{
     return this.http.post<any>(this.rootUrl+ '/'+ userName+'/match/'+methodName, selectedTopics);
   }
-/*  getUser(): Observable<any>{
+
+  getAllUsers(): Observable<any>{
      return this.http.get<any>(this.rootUrl);
-  }*/
-  getUser(userName: String) : Observable<any>{
+  }
+  getMyFriends(userName: String) : Observable<any>{
+    return this.http.get<any>(this.rootUrl+'/'+userName+'/friend');
+  }
+
+  addFriend(myPseudo: String, user:User) : Observable<any>{
+    return this.http.put<any>(this.rootUrl+'/'+myPseudo+'/friend',user);
+  }
+
+  deleteFriend(myPseudo: String, friend:string) : Observable<any>{
+    return this.http.delete<any>(this.rootUrl+'/'+myPseudo+'/friend/'+friend);
+  }
+
+  getUser(userName: String) : Observable<UserProfil>{
     return this.http.get<any>(this.rootUrl+'/'+userName);
   }
-  addFriend() {
-    return 0;
+  getConnectedUser():UserProfil{
+     return this.connectedUser;
   }
-
-  deleteFriend(){
-    return 0;
+  setConnectedUser(connectedUser : UserProfil){
+    this.connectedUser = connectedUser;
   }
-
 }
